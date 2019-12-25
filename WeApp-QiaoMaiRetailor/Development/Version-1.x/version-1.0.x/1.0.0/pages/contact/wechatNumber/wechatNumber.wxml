@@ -1,0 +1,46 @@
+<!--pages/contact/wechatNumber/wechatNumber.wxml-->
+
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">{{retailName}}</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-article">
+      <view class="weui-article__section">
+
+        <view class="weui-article__section">
+          <view class="weui-article__p_text" selectable='true'>
+            1、通过微信号添加 ：{{wechatNumber}}
+          </view>
+          <view class="page__bd_spacing">
+            <button class="weui-btn" type="primary" bindtap='copyWechatNumber'>复制微信号</button>
+          </view>
+
+          <view class="weui-article__p_text" selectable='true'>
+            2、通过手机号添加 ：{{phoneNumber}}
+          </view>
+          <view class="page__bd_spacing">
+            <button class="weui-btn" type="primary" bindtap='copyPhoneNumber'>复制手机号</button>
+          </view>
+
+          <view class="weui-article__p_text" selectable='true'>
+            3、通过二维码添加：点击下方按钮，保存二维码图片到相册，然后打开微信扫一扫，从相册中选取。
+          </view>
+          <view class="page__bd_spacing">
+            <button class="weui-btn" type="primary" bindtap='saveCode'>保存二维码到相册</button>
+          </view>
+
+          <view class="weui-article__p">
+            <image class="weui-article__img" src="/images/person_code.jpg" mode="aspectFit" style="height: 400px" />
+          </view>
+
+        </view>
+        <view class="weui-article__section">
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="page__ft">
+    <image src="/images/pg_footer.png" style="width: 140px; height: 20px;"></image>
+  </view>
+</view>

@@ -1,0 +1,66 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.0",
+	"appid": "wx4f91ae42ab1789e3",
+	"projectname": "miniprogram-test-1",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"cloudfunctionRoot": "cloud-functions/",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 2,
+			"list": [
+				{
+					"id": -1,
+					"name": "article",
+					"pathName": "pages/items/item01/item01",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "2",
+					"pathName": "pages/news/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "3",
+					"pathName": "pages/about/index",
+					"scene": null
+				}
+			]
+		}
+	}
+}

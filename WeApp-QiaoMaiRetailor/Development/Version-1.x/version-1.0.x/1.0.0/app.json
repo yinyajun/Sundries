@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/contact/contact",
+    "pages/news/news",
+    "pages/items/item01/item01",
+    "pages/items/item02/item02",
+    "pages/items/item03/item03",
+    "pages/logs/logs",
+    "pages/contact/retailorIntro/retailorIntro",
+    "pages/contact/phoneNumber/phoneNumber",
+    "pages/contact/wechatNumber/wechatNumber",
+    "pages/contact/shareApp/shareApp",
+    "pages/contact/showCode/showCode"
+  ],
+  "window": {
+    "navigationBarTitleText": "英英荞麦",
+    "navigationBarBackgroundColor": "#184410"
+  },
+  "tabBar": {
+    "selectedColor": "#0B1781",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "英英荞麦",
+        "iconPath": "images/tab_heart.png",
+        "selectedIconPath": "images/tab_heart.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "健康动态",
+        "iconPath": "images/tab_leaf.png",
+        "selectedIconPath": "images/tab_leaf.png"
+      },
+      {
+        "pagePath": "pages/contact/contact",
+        "text": "联系方式",
+        "iconPath": "images/tab_contact.png",
+        "selectedIconPath": "images/tab_contact.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  }
+}

@@ -1,0 +1,40 @@
+<!--pages/contact/shareApp/shareApp.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">分享{{retailName}}</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-article">
+      <view class="weui-article__section">
+
+        <view class="weui-article__section">
+          <view class="weui-article__p_text" selectable='true'>
+            点击下方按钮分享【英英荞麦】小程序给您的朋友。
+          </view>
+          <view class="page__bd_spacing">
+            <button class="weui-btn" type="primary" open-type='share'>一键分享给朋友</button>
+          </view>
+          <view class="weui-article__p_text" selectable='true'>
+            点击下方按钮生成分享海报，您可以将海报发到朋友圈。
+          </view>
+          <poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
+            <view class="page__bd_spacing">
+              <button class="weui-btn" type="primary">一键生成分享海报</button>
+            </view>
+          </poster>
+
+
+
+
+        </view>
+        <view class="weui-article__section">
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="page__ft">
+    <image src="/assets/images/pg_footer.png" style="width: 140px; height: 20px;"></image>
+  </view>
+</view>

@@ -1,0 +1,23 @@
+class Solution:
+    cnt = 1
+
+    def oddEvenList(self, head: ListNode) -> ListNode:
+        dummy_odd = odd = ListNode(None)
+        dummy_even = even = ListNode(None)
+
+        while head:
+            if self.cnt % 2:  # odd
+                odd.next = head
+                odd = odd.next
+            else:  # even
+                even.next = head
+                even = even.next
+            self.cnt += 1
+            head = head.next
+
+        even.next = None
+        odd.next = dummy_even.next
+
+        return dummy_odd.next
+#runtime:72 ms
+#memory:15.4 MB

@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "近期动态",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 5,
+  "usingComponents": {
+    "wux-tabs": "../../dist/tabs/index",
+    "wux-tab": "../../dist/tab/index",
+    "wux-badge": "../../dist/badge/index",
+    "wux-card": "../../dist/card/index",
+    "wux-wing-blank": "../../dist/wing-blank/index",
+    "wux-white-space": "../../dist/white-space/index",
+    "wux-fab-button": "../../dist/fab-button/index"
+  }
+}

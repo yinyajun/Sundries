@@ -1,0 +1,33 @@
+/* pages/tabbar/index.wxss */
+
+.icon {
+  vertical-align: middle;
+}
+
+swiper {
+  width: 100%;
+  height: 350rpx;
+}
+
+swiper image {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* 图文列表 */
+
+.weui-media-box__hd_in-appmsg {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+
+
+
+
+
+.wux-notice-bar {
+  /* background-color: #50504e !important;
+  color: rgb(223,217,217) !important; */
+}

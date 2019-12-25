@@ -1,0 +1,49 @@
+<view class='UCenter-bg'>
+  <image src='/assets/images/avatar_border.png' class='png' mode='widthFix'></image>
+  <view class='text-title'>绿色新鲜 · 经济实惠 · 省心放心
+  </view>
+  <view class='margin-top-sm'>
+    <text>电话{{phoneNumber}}</text>
+  </view>
+  <image src='https://image.weilanwl.com/gif/wave.gif' mode='scaleToFill' class='gif-wave'></image>
+</view>
+
+<wux-dialog id="wux-dialog" />
+<wux-dialog id="wux-dialog--alert" />
+
+<view class="page__bd page__bd_spacing">
+  <view class="kind-list">
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="kind-list__item">
+        <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+          <view class="weui-flex__item">{{item.name}}</view>
+          <image class="kind-list__img" src="/assets/images/icon_nav_{{item.id}}.png"></image>
+        </view>
+        <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+          <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+            <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="">
+
+
+              <wux-cell title="{{page.ch}}" is-link url="{{page.eng}}/{{page.eng}}" bind:click="{{page.bind}}"></wux-cell>
+
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+<view class="page__ft">
+  <image src="/assets/images/pg_footer.png" style="width: 140px; height: 20px;"></image>
+</view>
+<wux-fab-button position="{{ types[typeIndex] }}" theme="{{ colors[colorIndex] }}" direction="{{ dirs[dirIndex] }}" reverse="{{ reverse }}" spaceBetween="{{ spaceBetween }}" sAngle="{{ sAngle }}" eAngle="{{ eAngle }}" buttons="{{ buttons }}" bind:click="onClick"
+  bind:contact="onContact" bind:getuserinfo="onGotUserInfo" />

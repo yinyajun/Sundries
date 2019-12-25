@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/about/index",
+    "pages/news/index",
+    "pages/items/item01/item01",
+    "pages/items/item02/item02",
+    "pages/items/item03/item03",
+    "pages/about/retailorIntro/retailorIntro",
+    "pages/about/wechatNumber/wechatNumber",
+    "pages/about/shareApp/shareApp",
+    "pages/articles/article01/article01",
+    "pages/articles/article02/article02",
+    "pages/articles/article03/article03"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#353534",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "英英荞麦",
+    "backgroundColor": "#efeff4",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#04BE02",
+    "borderStyle": "black",
+    "backgroundColor": "#f7f7f8",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/images/iconfont-index.png",
+        "selectedIconPath": "assets/images/iconfont-index-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/news/index",
+        "iconPath": "assets/images/iconfont-news.png",
+        "selectedIconPath": "assets/images/iconfont-news-active.png",
+        "text": "近期动态"
+      },
+      {
+        "pagePath": "pages/about/index",
+        "iconPath": "assets/images/iconfont-about.png",
+        "selectedIconPath": "assets/images/iconfont-about-active.png",
+        "text": "关于我们"
+      }
+    ]
+  },
+  "cloud":true
+}

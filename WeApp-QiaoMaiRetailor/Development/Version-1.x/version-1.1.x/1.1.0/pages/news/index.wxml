@@ -1,0 +1,104 @@
+<view class="wux-navbar">
+  <wux-tabs wux-class="bordered" controlled current="{{ key }}" bindchange="onTabsChange">
+    <block wx:for="{{ tabs }}" wx:key="key">
+      <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+    </block>
+  </wux-tabs>
+</view>
+<view class="rec" />
+
+
+
+<swiper current="{{ index }}" class="swiper-box" duration="300" bindchange="onSwiperChange">
+
+
+
+
+  <!-- tab1 -->
+  <swiper-item>
+    <scroll-view class="scl" scroll-y bindscrolltolower="loadMore1">
+
+      <wux-white-space size="default" />
+
+      <block wx:for="{{tab1_newsList}}" wx:key="key">
+        <wux-white-space size="small" />
+        <wux-wing-blank size="default">
+          <wux-card title="{{item.title}}" extra="{{item.extra}}" thumb="{{item.thumb}}">
+            <view slot="body"><text class="wux-card-body-text" space='nbsp'>{{item.body}}</text></view>
+            <!-- <view slot="footer">{{item.footer}}</view> -->
+          </wux-card>
+        </wux-wing-blank>
+      </block>
+      <wux-white-space size="large" />
+      <wux-white-space size="large" />
+      <wux-white-space size="large" />
+
+      <view class="page__ft">
+        <image src="/assets/images/pg_footer.png" style="width: 140px; height: 20px;"></image>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+
+
+  <!-- tab2 -->
+  <swiper-item>
+    <scroll-view class="scl" scroll-y bindscrolltolower="loadMore2">
+
+      <view class="weui-panel">
+        <view class="weui-panel__hd">【{{retailName}}】知识小课堂</view>
+        <view class="weui-panel__bd">
+          <block wx:for="{{tab2_newsList}}" wx:key="">
+            <view class="weui-media-box weui-media-box_text" bindtap='{{item.bind}}'>
+              <view class="weui-media-box__title weui-media-box__title_in-text">{{item.title}}</view>
+              <view class="weui-media-box__desc">{{ item.body }}</view>
+              <view class="weui-media-box__info">
+                <view class="weui-media-box__info__meta">{{ item.footer }}</view>
+                <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{ item.extra }}</view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+
+      <wux-white-space size="large" />
+      <wux-white-space size="large" />
+      <wux-white-space size="large" />
+      <view class="page__ft">
+        <image src="/assets/images/pg_footer.png" style="width: 140px; height: 20px;"></image>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <!-- tab3 -->
+  <swiper-item>
+    <scroll-view class="scl" scroll-y>
+
+      <!-- <view class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+          </view> -->
+
+      <view class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line weui-loadmore__tips_in-dot"></view>
+      </view>
+      <view class="weui-loadmore weui-loadmore_line">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">赞无活动和推广</view>
+      </view>
+
+      <wux-white-space size="large" />
+      <wux-white-space size="large" />
+      <wux-white-space size="large" />
+      <view class="page__ft">
+        <image src="/assets/images/pg_footer.png" style="width: 140px; height: 20px;"></image>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+
+
+
+</swiper>
+
+<wux-fab-button position="{{ types[typeIndex] }}" theme="{{ colors[colorIndex] }}" direction="{{ dirs[dirIndex] }}" reverse="{{ reverse }}" spaceBetween="{{ spaceBetween }}" sAngle="{{ sAngle }}" eAngle="{{ eAngle }}" buttons="{{ buttons }}" bind:click="onClick"
+  bind:contact="onContact" bind:getuserinfo="onGotUserInfo" />

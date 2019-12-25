@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "英英荞麦-关于我们",
+  "usingComponents": {
+    "wux-fab-button": "../../dist/fab-button/index",
+    "wux-cell-group": "../../dist/cell-group/index",
+    "wux-cell": "../../dist/cell/index",
+    "wux-button": "../../dist/button/index",
+    "wux-dialog": "../../dist/dialog/index"
+  }
+}

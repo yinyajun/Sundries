@@ -1,0 +1,30 @@
+<!--pages/contact/retailorIntro/retailorIntro.wxml-->
+<!--pages/items/item01/item01.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">{{title}}</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-article">
+      <view class="weui-article__section">
+        <view class="weui-article__section">
+          <view class="weui-article__p_text">
+            我们秉承“品质、实惠、周到”的服务宗旨，为您及您家人的健康生活保驾护航，真诚提供荞麦壳、荞麦枕、荞麦茶、荞麦米、荞麦粉等荞麦系列产品。 
+          </view>
+          <view class="weui-article__p_text">
+            精选的优质材质绿色时新，亲自炒制的荞麦茶沁香可口，手工精制的各种荞麦枕舒适安神、促进睡眠。所有产品经济实惠，常州市金坛市区范围内送货上门。
+          </view>
+          <view class="weui-article__p">
+            <image class="weui-article__img" src="/assets/images/index_item_01.jpg" mode="aspectFit" style="height: 280px" />
+            <image class="weui-article__img" src="/assets/images/index_item_02.jpg" mode="aspectFit" style="height: 280px" />
+          </view>
+        </view>
+        <view class="weui-article__section">
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="page__ft">
+        <image src="/assets/images/pg_footer.png" style="width: 140px; height: 20px;"></image>
+  </view>
+</view>

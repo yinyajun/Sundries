@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "英英荞麦",
+    "usingComponents": {
+      "wux-fab-button": "../../dist/fab-button/index",
+      "wux-notice-bar": "../../dist/notice-bar/index"
+    }
+}

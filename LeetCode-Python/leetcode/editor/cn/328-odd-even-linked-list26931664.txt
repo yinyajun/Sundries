@@ -1,0 +1,37 @@
+class Solution:
+    def oddEvenList(self, head: ListNode) -> ListNode:
+        dummy_head = ListNode(None)
+        dummy_head.next = head
+
+        pre = dummy_head
+        cur = head
+
+        def recursive(pre, cur, idx):
+            if cur is None or cur.next is None:
+                if idx % 2 == 0:  # 最后一个节点是even
+                    tail = ListNode(None)  # 创造一个假的奇数节点，以抱枕child_gap一定存在
+                    tail.next = cur
+                    return tail, tail
+                else:  # 最后一个节点是odd
+                    return cur, cur
+
+            child_head, child_gap = recursive(pre.next, cur.next, idx + 1)
+
+            if idx % 2:  # odd
+                if child_head.val is None:  # 如果遇到假的奇数节点，删除之
+                    cur.next = child_head.next
+                    child_head.next = None
+                    return cur, cur
+                cur.next = child_head
+                return cur, child_gap
+            # even, 由于base case中保证了child_gap存在
+            cur.next = child_gap.next
+            child_gap.next = cur
+            pre.next = child_head  # 原来pre.next指向cur，消除野指针
+            return child_head, child_gap
+
+        new_head, _ = recursive(pre, cur, 1)
+
+        return new_head
+#runtime:72 ms
+#memory:21.9 MB

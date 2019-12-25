@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/d/work/git_repo/Algorithm-Data_structure/heap/main.cpp
+iostream
+-
+string
+-
+stdlib.h
+-
+algorithm
+-
+ctime
+-
+cmath
+-
+cassert
+-
+

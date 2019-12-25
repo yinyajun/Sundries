@@ -1,0 +1,16 @@
+/* pages/news/news.wxss */
+
+@import '../../utils/weiui.wxss';
+
+
+.weui-media-box__title{
+  font-size: 20px;
+}
+
+.weui-media-box__desc{
+  font-size: 17px;
+}
+
+
+
+

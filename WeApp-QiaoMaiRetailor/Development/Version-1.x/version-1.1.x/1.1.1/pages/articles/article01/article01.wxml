@@ -1,0 +1,84 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">为什么饭店都喜欢用荞麦泡茶? </view>
+    <view class="page__desc" bindtap='copyLink'>https://www.sohu.com/a/156551373_107408 </view>
+  </view>
+
+  <view class="page__bd">
+
+
+    <!-- <view class="page__bd page__bd_spacing">
+      <view class="sub-title">动态修改字体大小</view>
+      <wux-slider defaultValue="{{ [0] }}" step="20" bind:change="onChange" bind:afterChange="afterChange" />
+    </view> -->
+
+    <view class="weui-article" style="font-size:{{dynamic_font}}rpx">
+      <!-- <view class="weui-article__h1">大标题</view> -->
+      <view class="weui-article__section">
+        <view class="weui-article__p_text">
+          相信很多人去饭店吃饭，经常会发现服务员泡荞麦茶水，不仅颜色十分好看，而且茶水也比较干净、清亮，喝起来有浓浓的香味。那么，荞麦茶到底有什么功效呢？就让小荞给大家科普一下吧。
+        </view>
+        <view class="weui-article__p">
+          <image class="weui-article__img" src="https://5b0988e595225.cdn.sohucs.com/images/20170712/5e9522dc988748eab33acdcd778cfb95.png" mode="aspectFit" style="height: 180px" />
+        </view>
+        <view class="weui-article__title">一、常喝荞麦茶的5大好处</view>
+
+        <view class="weui-article__section">
+          <view class="weui-article__h3">1.净化改善血液循环</view>
+          <view class="weui-article__p_text">
+            荞麦茶中含有芸香甙，能够有效抑制体内的磷酸二酯酶的活动，避免血小板凝集，从而具有净化血液、改善血液循环的作用。此外，它也能防止血小板脂肪过氧化，降低血压。
+          </view>
+        </view>
+        <view class="weui-article__section">
+          <view class="weui-article__h3">2.保护微血管，降低血脂</view>
+          <view class="weui-article__p_text">
+            荞麦茶中的芸香甙能够抑制脂肪氧合酵素和前列腺素合成酶素的活性，避免血管变得脆弱，特别是微血管。同时，芸香甙具有较好的强化血管的作用，可以在一定程度上减少瘀伤、筋脉瘤等疾病的发生，也可以降低血压、预防脑中风。
+          </view>
+        </view>
+
+        <view class="weui-article__p">
+          <image class="weui-article__img" src="https://5b0988e595225.cdn.sohucs.com/images/20170712/e09c85154adc4a6a9b789e6e73b8e002.png" mode="aspectFit" style="height: 180px" />
+        </view>
+
+        <view class="weui-article__section">
+          <view class="weui-article__h3">3.美容养颜，减少细纹</view>
+          <view class="weui-article__p_text">
+            荞麦茶可帮助身体吸收并充分利用维生素C，也可以防止细胞受到自由基的破坏。另外，此成分亦可保持体内的胶原蛋白水平以减少皱纹和细纹的产生。
+          </view>
+        </view>
+        <view class="weui-article__section">
+          <view class="weui-article__h3">4.清除体内垃圾，减轻体重</view>
+          <view class="weui-article__p_text">
+            荞麦茶所含的可溶性纤维量远高于其它禾谷类作物，其含量是稻米的4倍、小麦的2.7倍及玉米的1.1倍。膳食纤维的摄取能提供饱足感和减缓消化速度以减低食欲，避免过量进食，因此，它可以帮助你减轻体重。它还可促进肠胃蠕动，帮助疏解便秘的问题，有助清除肠胃内积滞之食物。
+          </view>
+        </view>
+        <view class="weui-article__section">
+          <view class="weui-article__h3">5.预防糖尿病并发症</view>
+          <view class="weui-article__p_text">
+            荞麦茶中同时具有一特殊化合物六磷酸肌醇，能发挥与胰岛素相仿的作用，有效降低血糖。荞麦茶可以防止或抑制醛糖还原酶的活动，有助延迟或预防糖尿病并发症的发生。
+          </view>
+        </view>
+
+        <view class="weui-article__title">二、哪些人适合饮用荞麦茶？</view>
+        <view class="weui-article__p_text">
+          荞麦茶并非人人都可以喝，其中脾胃虚寒、过敏体质的人要慎重饮用。其他人群可放心饮食，特别是高血压、冠心病、糖尿病人群，应该多喝荞麦茶，近期临床开发出来的荞麦桑叶复合菌酵液就是用荞麦制成的降血压降血糖的产品。
+        </view>
+        <view class="weui-article__p_text">
+          结语：荞麦茶具有丰富的营养价值，适合大多数人群长期食用，但也要注意它的饮用禁忌和副作用哦。
+        </view>
+
+
+
+
+
+
+
+
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="page__ft">
+  <image src="/assets/images/pg_footer.png" style="width: 140px; height: 20px;"></image>
+</view>

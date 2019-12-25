@@ -1,0 +1,28 @@
+/* pages/contact/retailorIntro/retailorIntro.wxss */
+
+/* .weui-article__p{
+  margin-top: 20px;
+  text-align:center
+}
+
+.weui-article__p_text{
+  text-indent: 2em;
+} */
+
+
+/* .page__title{
+  position: relative;
+  font-size: 20px;
+  line-height: 1.1;
+  color: #2e5e86;
+  text-indent: 10px;
+}
+.page__title::after{
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  content:  "";
+  width: 5px;
+  height: 20px;
+  background: #2e5e86;
+} */

@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/BST.dir/main.cpp.o  -o BST.exe -Wl,--out-implib,libBST.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
