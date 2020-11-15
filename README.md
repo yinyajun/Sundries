@@ -15,12 +15,8 @@ Sundries consists of various tutorial projects or auxiliary projects.
 | LeetCode-Python | leetcode solutions by Python |
 | Practice-In-Reinforcement-Learning | learn from morvan python |
 | Practice-In-GAN | todo |
+| Python-Webframwork | python web framework |
 
-## Golang Projects Index
-
-| Package                                      | Content     |
-| ------------------------------------- | ---- |
-| endless | endless is Zero downtime restarts for golang HTTP and HTTPS servers.<br />Refactor to support GRPC server |
 
 ## JAVA Projects Index
 
