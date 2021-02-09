@@ -21,6 +21,7 @@ const MINVALUE = -1 << 31
 // 先判断子树是否是符合BST：左右子树都是BST，且root大于左子树所有值，root小于右子树所有值
 // 需要等待子树的结果，然后才能得到根的结果，很明显，这是一个后序遍历的过程
 
+// 找到root为根的子树中包含的最大BST结构的子树节点
 func postBST(root *abstract.TreeNode) (min, max, size int, node *abstract.TreeNode) {
 	if root == nil {
 		return MAXVALUE, MINVALUE, 0, nil
@@ -33,14 +34,14 @@ func postBST(root *abstract.TreeNode) (min, max, size int, node *abstract.TreeNo
 	// 如果root节点不能构成BST，那么往上也不能构成BST，无所谓最小值和最大值了
 	// 由于root节点可以构成BST的情况下，min=左子树最小, max=右子树最大
 	// 考虑从base情况回溯，min可能非常大，max可能非常小，所以min=更小(lMin, rootValue), max同理
-	min = utils.MinInt(lMin, rootVal)
+	min = utils.MinInt(lMin, rootVal) // 如果上一层root符合BST，min和max才有用，此时最小值必然是当前root和lMIn中的最小值
 	max = utils.MaxInt(rMax, rootVal)
 
 	// 当前节点是否符合BST
 	if root.Left == lBST && root.Right == rBST && utils.Less(rootVal, rMin) && utils.Less(lMax, rootVal) {
 		return min, max, lSize + rSize + 1, root
 	}
-	// 当前节点不符合BST，那么BST只可能是lBST和rBST中最大的那个
+	// 当前节点不符合BST，那么BST只可能是lBST和rBST中最大的那个（如果当前节点不能和左右子树构成BST，那么最大的BST只能是在左右bst中）
 	if lSize > rSize {
 		return min, max, lSize, lBST
 	} else {
