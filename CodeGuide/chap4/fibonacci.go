@@ -48,6 +48,8 @@ func f3(n int) int {
 }
 
 // 方阵的p次方
+// 原理：二进制思想。将一个十进制数转化为二进制数。二进制数的位数为logN。任何小于N的数总可以用若干个2^k的数之和表示
+// 举例：75:(1001011)2=64+8+2+1=2^6+2^3+2^1+2^0
 func MatrixPower(m [][]int, p int) [][]int {
 	row, col := len(m), len(m[0])
 	utils.Assert(row == col)
@@ -59,7 +61,7 @@ func MatrixPower(m [][]int, p int) [][]int {
 		res[i][i] = 1
 	}
 	tmp := m
-	for ; p != 0; p >>= 1 {
+	for ; p != 0; p >>= 1 { // 将p视为二进制，二进制位数为log2(p)
 		if (p & 1) != 0 {
 			res = MatMul(res, tmp)
 		}
