@@ -49,6 +49,13 @@ func ExpressionNum(express string, desired bool) int {
 }
 
 // 时间复杂度：N!
+// expression(i,j) = g(
+// 				f(expression(i,i), expression(i+2, j)),
+// 				f(expression(i,i+2), expression(i+4, j)),
+//              ....
+// 				f(expression(i,j-2), expression(j, j)),
+// 				)
+
 func expressionNum(express string, desired bool, lo, hi int) int {
 	if lo == hi {
 		if (desired && express[lo] == '1') || (!desired && express[lo] == '0') {
@@ -93,19 +100,26 @@ func expressionNum(express string, desired bool, lo, hi int) int {
 // 动态规划法
 // 之所以上面递归方法的时间复杂度高，是因为没有记录中间结果
 
-// 首先什么是起始状态？express[1:1], express[2:2], ..., express[n:n]这些只有单个元素的表达式是起始状态
-// 从所有单元素，然后二元素，... ，直到n元素的表达式。
+// 不难发现，有三个状态：i，j，desired；所以需要遍历这三个状态
 
-// 怎么定义状态？要保证能够表达 k元素
-// 很容易想到定义 express[i...j]为状态，这也是有关字符串的dp问题的一种常用状态定义方式。那么需要用矩阵来存储状态值。
+// 换个角度想，express[1:1], express[2:2], ..., express[n:n]这些只有单个元素的表达式，从所有单元素，然后二元素，... ，直到n元素的表达式。
+// 很容易想到定义 express[i...j]为状态，这也是有关字符串的dp问题的一种常用状态定义方式。为了区分不同desired，对同一个(i，j)，分别定义
 // t[i][j] = express[i...j]的desired为true的种数
 // f[i][j] = express[i...j]的desired为false的种数
+
+// expression(i,j) = g(
+// 				f(expression(i,i), expression(i+2, j)),
+// 				f(expression(i,i+2), expression(i+4, j)),
+//              ....
+// 				f(expression(i,j-2), expression(j, j)),
+// 				)
+// 这里简单写了递推公式，可以发现，切分的左半部分对应于(i,j)状态的左侧，右半部分对应于(i,j)装填的下侧。
 
 // init：t[i][i], f[i][i]
 // 可以发现，i<=j才有意义，所以状态矩阵t和f只有上三角部分才有意义。
 // 而初值是对角线上的所有元素，目标是右上角的元素。
 
-// 那么可以有两种方式迭代
+// 计算当前位置，需要已经计算出左边和下边的值。下面两种方式都可以做到，
 // 1. 斜向上迭代
 // 2. 从左向右，从下往上。
 
