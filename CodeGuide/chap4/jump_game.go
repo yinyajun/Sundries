@@ -19,7 +19,7 @@ import (
 func JumpGame(arr []int) int {
 	dp := make([]int, len(arr))
 	for i := range dp {
-		dp[i] = i // 填充一个比较大的树，最多就是i次
+		dp[i] = i // 填充一个比较大的数，最多就是i次
 	}
 	dp[0] = 0
 
