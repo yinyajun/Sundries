@@ -2,7 +2,6 @@ package main
 
 import (
 	"CodeGuide/base/utils"
-	"fmt"
 )
 
 // 未排序数组中累加和为给定值的最长子数组问题
@@ -33,7 +32,7 @@ func MaxLength(arr []int, target int) int {
 
 }
 
-func main() {
-	res := MaxLength([]int{-3, 7, 2, 1, 2, 3}, 7)
-	fmt.Println(res)
-}
+//func main() {
+//	res := MaxLength([]int{-3, 7, 2, 1, 2, 3}, 7)
+//	fmt.Println(res)
+//}
