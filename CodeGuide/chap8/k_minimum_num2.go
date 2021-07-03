@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math/rand"
 )
 
@@ -322,50 +321,50 @@ func Select2(a []int, k int, partition func([]int, int, int) (int, int)) int {
 	return a[lo]
 }
 
-func main() {
-	a := []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	r := partition1(a, 0, len(a)-1)
-	fmt.Println(r, a[r], a)
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	fmt.Println(Select(a, 4, partition1))
-
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	r = partition2(a, 0, len(a)-1)
-	fmt.Println(r, a[r], a)
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	fmt.Println(Select(a, 4, partition2))
-
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	r = partition3(a, 0, len(a)-1)
-	fmt.Println(r, a[r], a)
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	fmt.Println(Select(a, 4, partition3))
-
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	r1, r2 := threeWayPartition(a, 0, len(a)-1)
-	fmt.Println(r1, r2, a[r1], a[r2], a)
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	fmt.Println(Select2(a, 4, threeWayPartition))
-
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	r1, r2 = threeWayPartition2(a, 0, len(a)-1)
-	fmt.Println(r1, r2, a[r1], a[r2], a)
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	fmt.Println(Select2(a, 4, threeWayPartition2))
-
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	r1, r2 = BCPartition(a, 0, len(a)-1)
-	fmt.Println(r1, r2, a[r1], a[r2], a)
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	fmt.Println(Select2(a, 4, BCPartition))
-
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	r1, r2 = BCPartition2(a, 0, len(a)-1)
-	fmt.Println(r1, r2, a[r1], a[r2], a)
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	fmt.Println(Select2(a, 4, BCPartition2))
-
-	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
-	selection(a, 0, len(a)-1)
-	fmt.Println(a)
-}
+//func main() {
+//	a := []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	r := partition1(a, 0, len(a)-1)
+//	fmt.Println(r, a[r], a)
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	fmt.Println(Select(a, 4, partition1))
+//
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	r = partition2(a, 0, len(a)-1)
+//	fmt.Println(r, a[r], a)
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	fmt.Println(Select(a, 4, partition2))
+//
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	r = partition3(a, 0, len(a)-1)
+//	fmt.Println(r, a[r], a)
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	fmt.Println(Select(a, 4, partition3))
+//
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	r1, r2 := threeWayPartition(a, 0, len(a)-1)
+//	fmt.Println(r1, r2, a[r1], a[r2], a)
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	fmt.Println(Select2(a, 4, threeWayPartition))
+//
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	r1, r2 = threeWayPartition2(a, 0, len(a)-1)
+//	fmt.Println(r1, r2, a[r1], a[r2], a)
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	fmt.Println(Select2(a, 4, threeWayPartition2))
+//
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	r1, r2 = BCPartition(a, 0, len(a)-1)
+//	fmt.Println(r1, r2, a[r1], a[r2], a)
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	fmt.Println(Select2(a, 4, BCPartition))
+//
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	r1, r2 = BCPartition2(a, 0, len(a)-1)
+//	fmt.Println(r1, r2, a[r1], a[r2], a)
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	fmt.Println(Select2(a, 4, BCPartition2))
+//
+//	a = []int{423, 54, 654, 765, 321, 654, 892, 736, 467, 12, 67, 76}
+//	selection(a, 0, len(a)-1)
+//	fmt.Println(a)
+//}
