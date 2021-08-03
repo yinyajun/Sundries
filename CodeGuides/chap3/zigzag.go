@@ -5,7 +5,6 @@ import (
 	"CodeGuide/base/fundamentals"
 	"CodeGuide/base/searching"
 	"fmt"
-	"github.com/gammazero/deque"
 )
 
 func levelPrint(root *abstract.TreeNode) {
@@ -33,15 +32,15 @@ func levelPrint(root *abstract.TreeNode) {
 	}
 }
 
-func zigzagPrint(root *abstract.TreeNode) {
+func zigzagPrint2(root *abstract.TreeNode) {
 	if root == nil {
 		return
 	}
-	var queue deque.Deque
-	queue.PushBack(root)
+	queue := fundamentals.NewDeque()
 	lvl := 1
-	for queue.Len() != 0 {
-		size := queue.Len()
+	queue.PushBack(root)
+	for !queue.IsEmpty() {
+		size := queue.Size()
 		printLevelAndDirection(lvl)
 		for i := 0; i < size; i++ {
 			if lvl%2 == 1 {
@@ -82,5 +81,5 @@ func main() {
 	root := searching.CreateTreeFromArray([]string{"1", "2", "4", "#", "#", "#", "3", "5", "7", "#", "#", "8", "#", "#", "6", "#", "#"})
 	levelPrint(root)
 	fmt.Println("-------------------------")
-	zigzagPrint(root)
+	zigzagPrint2(root)
 }

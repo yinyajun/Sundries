@@ -18,3 +18,14 @@ type Queue interface {
 	Peek() interface{}
 	Iterate() Iterator
 }
+
+type Deque interface {
+	PushFront(interface{})
+	PushBack(interface{})
+	PopFront() interface{}
+	PopBack() interface{}
+	Size() int
+	IsEmpty() bool
+	Top() interface{}
+	Tail() interface{}
+}

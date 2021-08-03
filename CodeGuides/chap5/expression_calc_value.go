@@ -1,11 +1,11 @@
 package main
 
 import (
+	"CodeGuide/base/fundamentals"
 	"bufio"
 	"bytes"
 	"errors"
 	"fmt"
-	"github.com/gammazero/deque"
 )
 
 // 正则文法，递归下降文法，通过文法来定义优先级，越往下优先级越高
@@ -250,7 +250,7 @@ func isNumber(a byte) bool {
 // 由于这里是线性递归栈，可以类比链表的递归
 func evaluate2(a []byte, i int) (val, j int) {
 	pre := 0 // 数字的结束在遇到下一个符号，用此缓存遇到下一个符号之前的数字
-	deq := new(deque.Deque)
+	deq := fundamentals.NewDeque()
 	for i < len(a) && a[i] != ')' {
 		if isNumber(a[i]) {
 			pre = pre*10 + Byte2Num(a[i])
@@ -275,7 +275,7 @@ func evaluate2(a []byte, i int) (val, j int) {
 
 func evaluate(a string, i int) (val int, j int) {
 	pre := 0 // 记录数值的缓存
-	deq := new(deque.Deque)
+	deq := fundamentals.NewDeque()
 
 	for i < len(a) {
 		if a[i] == ')' {
@@ -306,8 +306,8 @@ func evaluate(a string, i int) (val int, j int) {
 }
 
 // 将计算数num写入deque
-func AddNum(deq *deque.Deque, num int) {
-	if deq.Len() != 0 {
+func AddNum(deq *fundamentals.Deque, num int) {
+	if deq.Size() != 0 {
 		symbol := deq.PopBack().(byte)
 		if isAdd(symbol) || isMinus(symbol) { // 加减法，啥也不做
 			deq.PushBack(symbol)
@@ -323,10 +323,10 @@ func AddNum(deq *deque.Deque, num int) {
 	deq.PushBack(num)
 }
 
-func getNum(deq *deque.Deque) int {
+func getNum(deq *fundamentals.Deque) int {
 	res := 0
 	addFlag := true
-	for deq.Len() > 0 {
+	for deq.Size() > 0 {
 		cur := deq.PopFront()
 		if v, ok := cur.(byte); ok && isAdd(v) {
 			addFlag = true
@@ -344,7 +344,7 @@ func getNum(deq *deque.Deque) int {
 }
 
 func main() {
-	a := []byte("2*(2+5)/2")
+	a := []byte("2*(2+6)/2")
 	reader := bufio.NewReader(bytes.NewReader(a))
 	p := &parser2{reader}
 	p.Evaluate()
