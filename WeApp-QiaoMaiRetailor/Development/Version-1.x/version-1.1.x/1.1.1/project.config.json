@@ -1,87 +1,110 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"autoAudits": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.6.0",
-	"appid": "wx4f91ae42ab1789e3",
-	"projectname": "1.1.1",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"cloudfunctionRoot": "cloud-functions/",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 5,
-			"list": [
-				{
-					"id": -1,
-					"name": "article",
-					"pathName": "pages/items/item01/item01",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "2",
-					"pathName": "pages/news/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "3",
-					"pathName": "pages/about/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "231",
-					"pathName": "pages/about/retailorIntro/retailorIntro",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "231",
-					"pathName": "pages/articles/article01/article01",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "432",
-					"pathName": "pages/articles/article01/article01",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.6.0",
+  "appid": "wx4f91ae42ab1789e3",
+  "projectname": "1.1.1",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "cloudfunctionRoot": "cloud-functions/",
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "article",
+          "pathName": "pages/items/item01/item01",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "2",
+          "pathName": "pages/news/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "3",
+          "pathName": "pages/about/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "231",
+          "pathName": "pages/about/retailorIntro/retailorIntro",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "231",
+          "pathName": "pages/articles/article01/article01",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "432",
+          "pathName": "pages/articles/article01/article01",
+          "scene": null
+        }
+      ]
+    }
+  }
 }
