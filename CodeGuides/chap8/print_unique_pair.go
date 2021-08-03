@@ -78,9 +78,9 @@ func printRest(a []int, k, first, left, right int) {
 	}
 }
 
-func main() {
-	a := []int{-8, -4, -3, 0, 1, 1, 2, 4, 5, 8, 9, 9}
-	PrintUniquePair(a, 10)
-	PrintUniquePair2(a, 10)
-	printUniqueTriad(a, 10)
-}
+//func main() {
+//	a := []int{-8, -4, -3, 0, 1, 1, 2, 4, 5, 8, 9, 9}
+//	PrintUniquePair(a, 10)
+//	PrintUniquePair2(a, 10)
+//	printUniqueTriad(a, 10)
+//}

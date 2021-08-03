@@ -53,6 +53,11 @@ func (q *LinkedQueue) Peek() interface{} {
 	return q.first.Key
 }
 
+func (q *LinkedQueue) Tail() interface{} {
+	utils.Assert(!q.IsEmpty(), "queue underflow")
+	return q.last.Key
+}
+
 func (q *LinkedQueue) Iterate() abstract.Iterator {
 	return utils.NewLinkedListIterator(q.first)
 }
