@@ -103,10 +103,10 @@ func (c *Circle) Members() (nodes []string) {
 func main() {
 	c := NewCircle()
 
-	c.AddNode("hjchat02.add.shbt.qihoo.net")
-	c.AddNode("p28877v.hulk.bjyt.qihoo.net")
-	c.AddNode("hjchat03.add.shbt.qihoo.net")
-	c.AddNode("p16727v.hulk.bjyt.qihoo.net")
+	c.AddNode("hjchat02.add.*****.*****.net")
+	c.AddNode("p28877v.hulk.bjyt.*****.net")
+	c.AddNode("hjchat03.add.*****.*****.net")
+	c.AddNode("p16727v.hulk.bjyt.*****.net")
 
 	fmt.Println(c.Get("123"))
 	fmt.Println(c.Get("234"))
