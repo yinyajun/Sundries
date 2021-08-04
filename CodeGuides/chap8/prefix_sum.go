@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // s[i] = sum(a[0...i]), i in [0, N-1]
 // s[i] = s[i-1] + a[i], when i>=1
 // s[0] = a[0]

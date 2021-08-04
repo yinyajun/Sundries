@@ -67,12 +67,15 @@ func MaxLengthUnderK2(a []int, k int) int {
 	return length
 }
 
-func main() {
-	num := []int{2, 5, 7, 9, 10}
-	fmt.Println(_find(num, 0, len(num)-1, 11))
-	a := []int{3, -2, -4, 0, 6}
-	fmt.Println(MaxLengthUnderK2(a, -2))
-}
+//func main() {
+//	num := []int{2, 5, 7, 9, 10}
+//	target := 11
+//	fmt.Println(_find(num, 0, len(num)-1, target))
+//	fmt.Println(_find2(num, 0, len(num)-1, target))
+//	fmt.Println(_find3(num, 0, len(num)-1, target))
+//	a := []int{3, -2, -4, 0, 6}
+//	fmt.Println(MaxLengthUnderK2(a, -2))
+//}
 
 // 在递增数组中，寻找大于target的最小索引
 // 换种说法，找到第一个大于target的索引
@@ -105,4 +108,16 @@ func _find2(sum []int, lo, hi, target int) int {
 	// when lo == hi == mid and target <= sum[mid], left part, hi-- , so lo > target, return lo
 	// when lo == hi == mid and target > sum[mid], right part, lo++ , so lo > target, return lo
 	return lo
+}
+
+func _find3(sum []int, lo, hi, target int) int {
+	if lo > hi {
+		return lo
+	}
+	mid := lo + (hi-lo)/2
+	if sum[mid] >= target {
+		return _find3(sum, lo, mid-1, target)
+	} else {
+		return _find3(sum, mid+1, hi, target)
+	}
 }
