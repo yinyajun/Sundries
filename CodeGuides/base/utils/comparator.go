@@ -85,6 +85,30 @@ func MaxInt(a ...int) int {
 	return m
 }
 
+func MaxFloat(a ...float32) float32 {
+	Assert(len(a) > 0)
+
+	m := a[0]
+	for i := 1; i < len(a); i++ {
+		if a[i] > m {
+			m = a[i]
+		}
+	}
+	return m
+}
+
+func MinFloat(a ...float32) float32 {
+	Assert(len(a) > 0)
+
+	m := a[0]
+	for i := 1; i < len(a); i++ {
+		if a[i] < m {
+			m = a[i]
+		}
+	}
+	return m
+}
+
 func CompareTo(a, b interface{}) int {
 	if Less(a, b) {
 		return -1

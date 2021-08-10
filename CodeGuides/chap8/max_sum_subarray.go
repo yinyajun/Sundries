@@ -1,5 +1,9 @@
 package main
 
+import (
+	"CodeGuide/base/utils"
+)
+
 // [1,-2,3,5,-2,6,-1] 中 [3,5,-2,6]
 
 // 用o(N^2)时间确定子数组边界[i,j]，然后再花O(N)时间计算子数组的和
@@ -41,6 +45,7 @@ func maxSumSubArray2(nums []int) int {
 
 // 处理成前缀和数组的形式，这样可以用O(1)的时间得到给定区间的区间和
 // 在不断遍历的过程中，相当于确定了区间的右边界，那么怎么寻找到左边界呢？
+// max{以a[0]为右边界的最大子数组和，..., 以a[i]为右边界的最大子数组和}
 // 在右边界左边的前缀和数组中寻找最小的值即可，通过维护minSum变量可以O(1)的时间获得最小的值
 // O(N)的时间复杂度
 func maxSumSubArray3(nums []int) int {
@@ -80,10 +85,29 @@ func maxSumSubArray4(nums []int) int {
 	return ans
 }
 
+// 从动态规划的角度考虑这个问题
+// dp[i]: 以nums[i]结尾的最大子数组和
+// dp[i] = max{dp[i-1] + nums[i], nums[i]}    dp[0]=nums[0]
+// 不难看出，这里和书上的解法本质一样
+// 因为可以这么等价， dp[i] = max{dp[i-1], 0} + nums[i]
+func maxSumSubArray5(nums []int) int {
+	var dp int
+	var ans int
+
+	for i := 0; i < len(nums); i++ {
+		dp = utils.MaxInt(dp+nums[i], nums[i])
+		if dp > ans {
+			ans = dp
+		}
+	}
+	return ans
+}
+
 //func main() {
 //	a := []int{1, -2, 3, 5, -2, 6, -1}
 //	fmt.Println(maxSumSubArray(a))
 //	fmt.Println(maxSumSubArray2(a))
 //	fmt.Println(maxSumSubArray3(a))
 //	fmt.Println(maxSumSubArray4(a))
+//	fmt.Println(maxSumSubArray5(a))
 //}
