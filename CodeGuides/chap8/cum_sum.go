@@ -55,13 +55,42 @@ func rangeSum2(cum []int, i, j int) int {
 	return cum[j+1] - cum[i]
 }
 
+// s(i+1, j+1) = sum([....(i,j)])
+func cumsumMat(mat [][]int) [][]int {
+	rows, cols := len(mat), len(mat[0])
+	cum := make([][]int, rows+1)
+	for i := 0; i < len(cum); i++ {
+		cum[i] = make([]int, cols+1)
+	}
+
+	for i := 0; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			cum[i+1][j+1] = cum[i][j+1] + cum[i+1][j] - cum[i][j] + mat[i][j]
+		}
+	}
+	return cum
+}
+
+func rangeSumMat(cum [][]int, x0, y0, x1, y1 int) int {
+	return cum[x1+1][y1+1] - cum[x0][y1+1] - cum[x1+1][y0] + cum[x0][y0]
+
+}
+
 //func main() {
 //	a := []int{2, 3, 6, 7, 3}
-//	i,j := 0,0
+//	i, j := 0, 0
 //	fmt.Println(cumsum1(a))
 //	fmt.Println(cumsum2(a))
 //	fmt.Println(cumsum3(a))
 //	fmt.Println(rangeSum1(cumsum1(a), i, j))
 //	fmt.Println(rangeSum2(cumsum2(a), i, j))
 //	fmt.Println(rangeSum2(cumsum3(a), i, j))
+//
+//	mat := [][]int{
+//		{-1, -1, -1},
+//		{-1, 2, 2},
+//		{-1, -1, -1},
+//	}
+//	fmt.Println(cumsumMat(mat))
+//	fmt.Println(rangeSumMat(cumsumMat(mat), 1,1, 1,2))
 //}
