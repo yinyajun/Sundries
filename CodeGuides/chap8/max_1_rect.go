@@ -137,13 +137,13 @@ func hasSize(mat [][]int, i, j, sz int) bool {
 	return true
 }
 
-func main() {
-	mat := [][]int{
-		{0, 1, 1, 1, 1},
-		{0, 1, 0, 0, 1},
-		{0, 1, 0, 0, 1},
-		{0, 1, 1, 1, 1},
-		{0, 1, 0, 1, 1},
-	}
-	fmt.Println(max_1_rect3(mat))
-}
+//func main() {
+//	mat := [][]int{
+//		{0, 1, 1, 1, 1},
+//		{0, 1, 0, 0, 1},
+//		{0, 1, 0, 0, 1},
+//		{0, 1, 1, 1, 1},
+//		{0, 1, 0, 1, 1},
+//	}
+//	fmt.Println(max_1_rect3(mat))
+//}
