@@ -16,7 +16,7 @@ import (
 var Random *random
 
 func init() {
-	Random = NewRandom(123)
+	Random = NewRandom(124)
 }
 
 type random struct {
