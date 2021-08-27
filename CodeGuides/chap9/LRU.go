@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // 实现LRU
 // hash链表
 // 为了O(1)时间找到元素，使用hash
@@ -153,37 +151,37 @@ func (c *LRU) Put(key, val interface{}) {
 	c.hash[key] = node
 }
 
-func main() {
-	cache := NewLRU(2)
-
-	cache.Put(1, 1)
-	cache.Put(2, 2)
-	for cur := cache.list.Root.Next; cur != &cache.list.Root; cur = cur.Next {
-		fmt.Printf("[%d, %d] ", cur.Key, cur.Val)
-	}
-	fmt.Println()
-
-	fmt.Println(cache.Get(1))
-	for cur := cache.list.Root.Next; cur != &cache.list.Root; cur = cur.Next {
-		fmt.Printf("[%d, %d] ", cur.Key, cur.Val)
-	}
-	fmt.Println()
-
-	cache.Put(3, 3)
-	for cur := cache.list.Root.Next; cur != &cache.list.Root; cur = cur.Next {
-		fmt.Printf("[%d, %d] ", cur.Key, cur.Val)
-	}
-	fmt.Println()
-
-	fmt.Println(cache.Get(2))
-	for cur := cache.list.Root.Next; cur != &cache.list.Root; cur = cur.Next {
-		fmt.Printf("[%d, %d] ", cur.Key, cur.Val)
-	}
-	fmt.Println()
-
-	cache.Put(1, 4)
-	for cur := cache.list.Root.Next; cur != &cache.list.Root; cur = cur.Next {
-		fmt.Printf("[%d, %d] ", cur.Key, cur.Val)
-	}
-	fmt.Println()
-}
+//func main() {
+//	cache := NewLRU(2)
+//
+//	cache.Put(1, 1)
+//	cache.Put(2, 2)
+//	for cur := cache.list.Root.Next; cur != &cache.list.Root; cur = cur.Next {
+//		fmt.Printf("[%d, %d] ", cur.Key, cur.Val)
+//	}
+//	fmt.Println()
+//
+//	fmt.Println(cache.Get(1))
+//	for cur := cache.list.Root.Next; cur != &cache.list.Root; cur = cur.Next {
+//		fmt.Printf("[%d, %d] ", cur.Key, cur.Val)
+//	}
+//	fmt.Println()
+//
+//	cache.Put(3, 3)
+//	for cur := cache.list.Root.Next; cur != &cache.list.Root; cur = cur.Next {
+//		fmt.Printf("[%d, %d] ", cur.Key, cur.Val)
+//	}
+//	fmt.Println()
+//
+//	fmt.Println(cache.Get(2))
+//	for cur := cache.list.Root.Next; cur != &cache.list.Root; cur = cur.Next {
+//		fmt.Printf("[%d, %d] ", cur.Key, cur.Val)
+//	}
+//	fmt.Println()
+//
+//	cache.Put(1, 4)
+//	for cur := cache.list.Root.Next; cur != &cache.list.Root; cur = cur.Next {
+//		fmt.Printf("[%d, %d] ", cur.Key, cur.Val)
+//	}
+//	fmt.Println()
+//}
