@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // LRU的核心就是哈希链表，相对比较简单
 // 而LFU 算法的淘汰策略是 Least Frequently Used，也就是每次淘汰那些使用次数最少的数据。
 
@@ -140,15 +138,15 @@ func (c *LFU) removeMinFreq() {
 	delete(c.KeyToVal, toDel)
 }
 
-func main() {
-	cache := NewLFU(2)
-
-	cache.Put(9, 10)
-	cache.Put(8, 20)
-
-	fmt.Println(cache.Get(9))
-
-	cache.Put(7, 30)
-
-	fmt.Println(cache.Get(8))
-}
+//func main() {
+//	cache := NewLFU(2)
+//
+//	cache.Put(9, 10)
+//	cache.Put(8, 20)
+//
+//	fmt.Println(cache.Get(9))
+//
+//	cache.Put(7, 30)
+//
+//	fmt.Println(cache.Get(8))
+//}
