@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // A    B    C    AA    AB    AC       BABC
 // 1    2    3    4     5     6        72
 
@@ -72,10 +70,10 @@ func getNumFromChar(num [32]int, k int) int {
 	return res
 }
 
-func main() {
-	fmt.Println(getKCharFromNum(72, 3))
-	fmt.Println(getCharFromNum(72, 3))
-	fmt.Println(getNumFromKchar(getKCharFromNum(72, 3), 3))
-	fmt.Println(getNumFromKChar2(getKCharFromNum(72, 3), 3))
-	fmt.Println(getNumFromChar(getCharFromNum(72, 3), 3))
-}
+//func main() {
+//	fmt.Println(getKCharFromNum(72, 3))
+//	fmt.Println(getCharFromNum(72, 3))
+//	fmt.Println(getNumFromKchar(getKCharFromNum(72, 3), 3))
+//	fmt.Println(getNumFromKChar2(getKCharFromNum(72, 3), 3))
+//	fmt.Println(getNumFromChar(getCharFromNum(72, 3), 3))
+//}
