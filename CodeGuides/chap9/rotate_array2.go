@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 // 在旋转数组中寻找一个数
 
 func RotateArray2(arr []int, target int) bool {
@@ -64,13 +60,13 @@ func RotateArray2(arr []int, target int) bool {
 
 }
 
-func main() {
-	arr := []int{4, 5, 6, 7, 1, 2, 3}
-	fmt.Println(RotateArray2(arr, 8))
-
-	arr = []int{2, 2, 2, 2, 2, 3, 2, 2}
-	fmt.Println(RotateArray2(arr, 2))
-
-	arr = []int{2, 2, 1, 2, 2, 2, 2, 2}
-	fmt.Println(RotateArray2(arr, 0))
-}
+//func main() {
+//	arr := []int{4, 5, 6, 7, 1, 2, 3}
+//	fmt.Println(RotateArray2(arr, 8))
+//
+//	arr = []int{2, 2, 2, 2, 2, 3, 2, 2}
+//	fmt.Println(RotateArray2(arr, 2))
+//
+//	arr = []int{2, 2, 1, 2, 2, 2, 2, 2}
+//	fmt.Println(RotateArray2(arr, 0))
+//}
