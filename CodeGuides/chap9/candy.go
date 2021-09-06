@@ -90,7 +90,7 @@ func minCandies2(arr []int) int {
 			if lSize >= rSize {
 				res += candies - rSize
 			} else {
-				res += candies - rSize - same*lSize + same*rSize
+				res += candies - rSize - same*lSize + same*rSize // 移除左右，然后单独加上右
 			}
 			lSize = 1
 			i = next + 1
