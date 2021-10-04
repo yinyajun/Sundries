@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // 1. 每个孩子至少有1个糖果
 // 2. 相邻两个孩子，得分较多的必须多拿糖果
 // 求最少需要的糖果，时间和空间复杂度要求为O(N)
@@ -132,8 +130,8 @@ func RightCandiesAndSize(arr []int, left, right int) (int, int) {
 	return res, size
 }
 
-func main() {
-	arr := []int{0, 1, 2, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1}
-	fmt.Println(minCandies(arr))
-	fmt.Println(minCandies2(arr))
-}
+//func main() {
+//	arr := []int{0, 1, 2, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1}
+//	fmt.Println(minCandies(arr))
+//	fmt.Println(minCandies2(arr))
+//}

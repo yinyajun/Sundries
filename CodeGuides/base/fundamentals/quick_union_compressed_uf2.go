@@ -37,7 +37,16 @@ func (u *QuickUnionCompressedUF2) find(p int) int {
 	if u.parent[p] != p {
 		u.parent[p] = u.find(u.parent[p]) // non-root node link to the root node
 	}
+	// u.parent[p]==p
 	return u.parent[p] //attention
+}
+
+func (u *QuickUnionCompressedUF2) find2(p int) int {
+	if u.parent[p] == p {
+		return p
+	}
+	u.parent[p] = u.find2(u.parent[p])
+	return u.parent[p]
 }
 
 func (u *QuickUnionCompressedUF2) Connected(p, q int) bool { return u.Find(p) == u.Find(q) }

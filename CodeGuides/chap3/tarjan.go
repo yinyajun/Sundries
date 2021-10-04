@@ -3,8 +3,6 @@ package main
 import (
 	"CodeGuide/base/abstract"
 	"CodeGuide/base/fundamentals"
-	"CodeGuide/base/searching"
-	"fmt"
 )
 
 // 二叉树的最近公共祖先的问题
@@ -89,8 +87,11 @@ type Query struct {
 }
 
 type Tarjan struct {
-	queries   map[*abstract.TreeNode]*fundamentals.LinkedQueue
-	indexes   map[*abstract.TreeNode]*fundamentals.LinkedQueue
+	// key表示查询涉及的某个节点，val表示key与哪些节点之间有查询任务
+	queries map[*abstract.TreeNode]*fundamentals.LinkedQueue
+	// key表示查询涉及的某个节点，val表示key与哪些节点的查询任务的结果放在ans的位置
+	indexes map[*abstract.TreeNode]*fundamentals.LinkedQueue
+	// 节点所在集合中的公共根节点(k:集合的根，v:公共根节点)
 	ancestors map[*abstract.TreeNode]*abstract.TreeNode
 	set       *UnionFind
 }
@@ -146,11 +147,15 @@ func (t *Tarjan) SetAnswers(head *abstract.TreeNode, ans []*abstract.TreeNode) {
 		return
 	}
 
+	// 处理左孩子
 	t.SetAnswers(head.Left, ans)
+	// 处理完左孩子节点，回到根节点
 	t.set.Union(head, head.Left)
 	t.ancestors[t.set.Find(head)] = head
 
+	// 处理右孩子
 	t.SetAnswers(head.Right, ans)
+	// 处理完右孩子节点，回到根节点
 	t.set.Union(head, head.Right)
 	t.ancestors[t.set.Find(head)] = head
 
@@ -165,20 +170,30 @@ func (t *Tarjan) SetAnswers(head *abstract.TreeNode, ans []*abstract.TreeNode) {
 	}
 }
 
-func main() {
-	root := searching.CreateTreeFromArray([]string{"1", "2", "4", "#", "#", "5", "7", "#", "#", "8", "#", "#", "3", "#", "6", "9", "#", "#", "#"})
-	queries := []*Query{
-		&Query{root.Left.Left, root.Left.Right.Left},
-		&Query{root.Left.Right.Right, root.Left.Right.Left},
-		&Query{root.Left.Right.Right, root.Right.Right.Left},
-		&Query{root.Right.Right.Left, root.Right},
-		&Query{root.Right.Right, root.Right.Right},
-		&Query{nil, root.Left.Right},
-		&Query{nil, nil},
-	}
-	t := NewTarjan()
-	ans := t.Query(root, queries)
-	for i := range ans {
-		fmt.Println(queries[i].o1, queries[i].o2, ans[i])
-	}
-}
+//func main() {
+//	//root := searching.CreateTreeFromArray([]string{"1", "2", "4", "#", "#", "5", "7", "#", "#", "8", "#", "#", "3", "#", "6", "9", "#", "#", "#"})
+//	root := searching.CreateTreeFromArray([]string{"0", "1", "2", "#", "#", "3", "4", "#", "#", "5", "#", "#"})
+//	fmt.Println(root)
+//	fmt.Println(root.Left)
+//	fmt.Println(root.Left.Left)
+//	fmt.Println(root.Left.Right)
+//	fmt.Println(root.Left.Right.Left)
+//	fmt.Println(root.Left.Right.Right)
+//	//fmt.Println(root.Left.Val)
+//	//fmt.Println(root.Right.Val)
+//
+//	//queries := []*Query{
+//	//	&Query{root.Left.Left, root.Left.Right.Left},
+//	//	&Query{root.Left.Right.Right, root.Left.Right.Left},
+//	//	&Query{root.Left.Right.Right, root.Right.Right.Left},
+//	//	&Query{root.Right.Right.Left, root.Right},
+//	//	&Query{root.Right.Right, root.Right.Right},
+//	//	&Query{nil, root.Left.Right},
+//	//	&Query{nil, nil},
+//	//}
+//	//t := NewTarjan()
+//	//ans := t.Query(root, queries)
+//	//for i := range ans {
+//	//	fmt.Println(queries[i].o1, queries[i].o2, ans[i])
+//	//}
+//}

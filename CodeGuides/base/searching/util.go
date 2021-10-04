@@ -11,9 +11,11 @@ package searching
 import (
 	"CodeGuide/base/abstract"
 	"CodeGuide/base/fundamentals"
+	"container/list"
 	"fmt"
 )
 
+// preorder建树
 func CreateTreeFromQueue(queue abstract.Queue) *abstract.TreeNode {
 	if queue.IsEmpty() {
 		return nil
@@ -34,6 +36,47 @@ func CreateTreeFromArray(array []string) *abstract.TreeNode {
 		queue.Enqueue(array[i])
 	}
 	return CreateTreeFromQueue(queue)
+}
+
+func CreateTreeFromArray2(array []string) *abstract.TreeNode {
+	if len(array) == 0 {
+		return nil
+	}
+	var root, cur *abstract.TreeNode
+	q := new(list.List)
+	var i int
+
+	getNode := func(str string) *abstract.TreeNode {
+		if str == "#" {
+			return nil
+		}
+		return abstract.NewTreeNode(str, nil)
+	}
+
+	root = getNode(array[i])
+	i++
+	if root != nil {
+		q.PushBack(root)
+	}
+
+	for q.Len() > 0 {
+		cur = q.Remove(q.Front()).(*abstract.TreeNode)
+		if i < len(array) {
+			cur.Left = getNode(array[i])
+			i++
+			if cur.Left != nil {
+				q.PushBack(cur.Left)
+			}
+		}
+		if i < len(array) {
+			cur.Right = getNode(array[i])
+			i++
+			if cur.Right != nil {
+				q.PushBack(cur.Right)
+			}
+		}
+	}
+	return root
 }
 
 func createTreeFromArray(idx *int, array []string) *abstract.TreeNode {
