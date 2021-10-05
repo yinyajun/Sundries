@@ -18,14 +18,13 @@ func Test2_1_2(t *testing.T) {
 	fmt.Println(idx, nums[:idx])
 }
 
-
-func Test2_1_3(t *testing.T){
-	nums := []int {4,5,6,7,0,1,2}
+func Test2_1_3(t *testing.T) {
+	nums := []int{4, 5, 6, 7, 0, 1, 2}
 	//nums := []int {0,1,2,3,4,5,6}
 	fmt.Println(searchD(nums, 3))
 }
 
-func Test2_1_4(t *testing.T){
-	nums := []int {2, 2, 2, 2, 2, 3, 2, 2}
-	fmt.Println(search2D(nums, 1))
+func Test2_1_4(t *testing.T) {
+	nums := []int{2, 2, 2, 2, 2, 3, 2, 2}
+	fmt.Println(search2E(nums, 3))
 }
