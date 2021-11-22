@@ -12,7 +12,6 @@ Your function should return length = 2, and A is now [1,2].
 
 package chap2
 
-
 // time: O(n); space: O(1)
 // 注意nums[i]和nums[idx]比较，而不是nums[i-1]比较，尽管这里不影响
 func removeDuplicates(nums []int) int {
@@ -30,5 +29,18 @@ func removeDuplicates(nums []int) int {
 	return idx + 1
 }
 
+func removeDuplicatesB(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
 
-
+	var idx = 1 // [0, idx) no duplicate
+	for i := 1; i < len(nums); i++ {
+		if nums[i] == nums[idx-1] {
+			continue
+		}
+		nums[idx] = nums[i]
+		idx++
+	}
+	return idx
+}

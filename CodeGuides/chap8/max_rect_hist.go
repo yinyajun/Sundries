@@ -114,6 +114,10 @@ func MaxRectHist3(heights []int) int {
 // 出栈的时候，已经遍历到cur, h[i] >= h[cur]，cur可能是将要出栈的元素i的右边界
 // 但是呢，由于是>=关系，不能保证右边界是正确的，但是重复柱子中最右边那个一定是正确的
 // 因此可以在出栈的时候确定右边界，这样就不需要遍历两次了
+
+
+// h[i] > top, 入栈 （top是左边界）
+// h[i] <= top, 出栈 （i是可能的右边界）
 func MaxRectHist4(heights []int) int {
 	var ans int
 	var area int
