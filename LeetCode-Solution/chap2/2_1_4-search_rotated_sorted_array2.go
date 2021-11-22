@@ -9,6 +9,7 @@ Write a function to determine if a given target is in the array.
 
 package chap2
 
+// time: O(n), space: O(1)
 func search2(nums []int, target int) bool {
 	lo, hi := 0, len(nums)-1 // [lo, hi]
 	var mid int
@@ -133,6 +134,43 @@ func search2D(nums []int, target int) bool {
 				} else {
 					//nums[lo] < nums[mid]  ==> [lo', mid-1] increasing
 					//nums[lo] > nums[mid]， [lo', mid-1]出现断点
+					hi = mid - 1
+					break
+				}
+			}
+		}
+	}
+	return false
+}
+
+func search2E(nums []int, target int) bool {
+	lo, hi := 0, len(nums)-1 // [lo, hi]
+	var mid int
+
+	for lo <= hi {
+		mid = (hi-lo)/2 + lo
+		if nums[mid] == target {
+			return true
+		}
+
+		if nums[lo] < nums[mid] { // [lo, mid] increasing
+			if nums[lo] <= target && target < nums[mid] {
+				hi = mid - 1
+			} else {
+				lo = mid + 1
+			}
+		} else if nums[mid] < nums[hi] { // [mid, hi] increasing
+			if nums[mid] < target && target <= nums[hi] {
+				lo = mid + 1
+			} else {
+				hi = mid - 1
+			}
+		} else { // nums[lo]>=nums[mid]>=nums[hi]
+			for lo <= mid {
+				if nums[lo] == nums[mid] {
+					lo++
+				} else {
+					// nums[lo] != nums[mid], [lo, mid-1]递增或者出现断点
 					hi = mid - 1
 					break
 				}
