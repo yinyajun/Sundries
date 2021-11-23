@@ -120,4 +120,31 @@ func Test2_1_15(t *testing.T) {
 	fmt.Println(trappingRainWaterB(height))
 	fmt.Println(trappingRainWaterC(height))
 	fmt.Println(trappingRainWaterD(height))
+	fmt.Println(trappingRainWaterE(height))
 }
+
+func Test2_1_16(t *testing.T) {
+	matrix := [][]int{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}}
+	rotateImage(matrix)
+	fmt.Println(matrix)
+	matrix = [][]int{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}}
+	rotateImageB(matrix)
+	fmt.Println(matrix)
+}
+
+func Test2_1_17(t *testing.T) {
+	digits := []int{9, 9, 9, 9}
+	fmt.Println(plusOne(digits))
+}
+
+func Test2_1_18(t *testing.T) {
+	fmt.Println(climbingStairs(7))
+	fmt.Println(climbingStairsB(7))
+}
+
+func Test2_1_19(t *testing.T) {
+	n := 4
+	fmt.Println(grayCodeC(n))
+}
+
+//[0 1 3 2 6 7 5 4 12 13 15 14 10 11 9 8]

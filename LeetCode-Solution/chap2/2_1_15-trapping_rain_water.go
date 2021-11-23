@@ -123,6 +123,7 @@ func trappingRainWaterC(height []int) int {
  height = min(h[prev(top)], h[i]) - h[top]
 
 */
+// time: O(n); space: O(1)
 func trappingRainWaterD(height []int) int {
 	var (
 		monoStack = new(list.List)
@@ -133,7 +134,7 @@ func trappingRainWaterD(height []int) int {
 
 	for i := range height {
 		for monoStack.Len() > 0 && height[i] > height[monoStack.Back().Value.(int)] {
-			top = monoStack.Remove(monoStack.Back()).(int)
+			top = monoStack.Remove(monoStack.Back()).(int) // 每次求top位置的积水
 			if monoStack.Len() == 0 {
 				break
 			}
@@ -144,6 +145,44 @@ func trappingRainWaterD(height []int) int {
 			res += w * h
 		}
 		monoStack.PushBack(i)
+	}
+	return res
+}
+
+// time: O(n); space: O(1)
+// 类似于方法3，遍历一遍找到最高柱子，将整个height分为两个区间，[lo, max][max, hi]
+// 对于左区间，右边界已经确定，只要不断找左边界即可
+// 对于右区间，左边界已经确定，只要不断找右边界即可
+func trappingRainWaterE(height []int) int {
+	var (
+		n   = len(height)
+		max int
+		top int
+		res int
+	)
+
+	for i, h := range height {
+		if h > height[max] {
+			max = i
+		}
+	}
+
+	top = 0
+	for i := 0; i < max; i++ {
+		if height[i] > top { // top代表左边界
+			top = height[i]
+		} else {
+			res += top - height[i]
+		}
+	}
+
+	top = 0
+	for j := n - 1; j > max; j-- {
+		if height[j] > top { // top代表右边界
+			top = height[j]
+		} else {
+			res += top - height[j]
+		}
 	}
 	return res
 }
