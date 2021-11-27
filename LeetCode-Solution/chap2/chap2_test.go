@@ -147,4 +147,41 @@ func Test2_1_19(t *testing.T) {
 	fmt.Println(grayCodeC(n))
 }
 
-//[0 1 3 2 6 7 5 4 12 13 15 14 10 11 9 8]
+func Test2_1_20(t *testing.T) {
+	matrix := [][]int{
+		{1, 2, 2, 3, 4},
+		{1, 1, 2, 3, 4},
+		{1, 0, 2, 0, 4},
+		{1, 0, 2, 3, 1},
+	}
+	setZerosB(matrix)
+	fmt.Println(matrix)
+}
+
+func Test2_1_21(t *testing.T) {
+	gas := []int{2, 3, 5}
+	cost := []int{3, 5, 2}
+
+	fmt.Println(canCompleteCircuit(gas, cost))
+	fmt.Println(canCompleteCircuitB(gas, cost))
+}
+
+func Test2_1_22(t *testing.T) {
+	arr := []int{0, 1, 2, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1}
+	fmt.Println(candies(arr))
+	fmt.Println(candiesB(arr))
+	fmt.Println(candiesC(arr))
+	fmt.Println(candiesD(arr))
+	//fmt.Println(candies2(arr))
+}
+
+func Test2_1_23(t *testing.T) {
+	arr := []int{1, 1, 2, 2, 3, 4, 4}
+	fmt.Println(singleNumber(arr))
+}
+
+func Test2_1_24(t *testing.T) {
+	arr := []int{1, 1, 1, 2, 3, 3, 3}
+	fmt.Println(singleNumber2(arr))
+	fmt.Println(singleNumber2B(arr))
+}
