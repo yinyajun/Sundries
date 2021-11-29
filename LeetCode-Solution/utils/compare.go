@@ -28,3 +28,10 @@ func AbsInt(a int) int {
 	}
 	return a
 }
+
+func If(condition bool, a, b interface{}) interface{} {
+	if condition {
+		return a
+	}
+	return b
+}
