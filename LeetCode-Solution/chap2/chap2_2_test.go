@@ -6,6 +6,7 @@
 package chap2
 
 import (
+	"fmt"
 	"solution/utils"
 	"testing"
 )
@@ -38,12 +39,24 @@ func Test2_2_2(t *testing.T) {
 	l = utils.NewListFromSlice(a)
 	utils.ShowList(reverseListC(l))
 
+	l = utils.NewListFromSlice(a)
+	utils.ShowList(reverseListD(l))
+
+	l = utils.NewListFromSlice(a)
+	utils.ShowList(reverseListE(l))
+
+	l = utils.NewListFromSlice(a)
+	utils.ShowList(reverseListF(l))
+
 	b := []int{1, 2, 3, 4, 5}
 	l = utils.NewListFromSlice(b)
-	utils.ShowList(reverseKList(l, 8))
+	utils.ShowList(reverseKList(l, 3))
 
 	l = utils.NewListFromSlice(b)
-	utils.ShowList(reverseKListB(l, 8))
+	utils.ShowList(reverseKListB(l, 3))
+
+	l = utils.NewListFromSlice(b)
+	utils.ShowList(reverseKListC(l, 3))
 }
 
 func Test2_2_3(t *testing.T) {
@@ -92,4 +105,37 @@ func Test2_2_8(t *testing.T) {
 
 	l = utils.NewListFromSlice([]int{1, 2, 3, 4, 5, 6})
 	utils.ShowList(swapNodesInPairsC(l))
+}
+
+func Test2_2_9(t *testing.T) {
+	l := utils.NewListFromSlice([]int{1, 2, 3, 4, 5, 6, 7})
+	utils.ShowList(reverseNodesInGroup(l, 3))
+
+	l = utils.NewListFromSlice([]int{1, 2, 3, 4, 5, 6, 7})
+	utils.ShowList(reverseNodesInGroupB(l, 3))
+}
+
+func Test2_2_10(t *testing.T) {
+	n1 := &RandomNode{val: 1}
+	n2 := &RandomNode{val: 2}
+	n3 := &RandomNode{val: 3}
+	n4 := &RandomNode{val: 4}
+
+	n1.next = n2
+	n2.next = n3
+	n3.next = n4
+	n1.random = n4
+	n3.random = n2
+
+	for cur := n1; cur != nil; cur = cur.next {
+		fmt.Print(cur)
+	}
+	fmt.Println()
+
+	c := copyRandomList(n1)
+
+	for cur := c; cur != nil; cur = cur.next {
+		fmt.Print(cur)
+	}
+	fmt.Println()
 }

@@ -124,7 +124,7 @@ func reverseListB(head *utils.ListNode) *utils.ListNode {
 	pre, cur := head, head.Next // ensure head != nil
 
 	for cur != nil {
-		pre.Next = cur.Next
+		pre.Next = cur.Next // note: 这里不仅有缓存cur.next的作用，pre作为反转后的链表尾部，将其后继节点连接到当前节点之后（保证最后tail.next=nil）
 
 		// 头插法，将cur插入到首个位置
 		cur.Next = dummy.Next
@@ -152,30 +152,109 @@ func reverseListC(head *utils.ListNode) *utils.ListNode {
 		pre, cur = cur, post
 	}
 	// dummy.next -> head, ensure head != nil
+	// 由于每次操作仅仅反向连接，没有处理尾节点
 	dummy.Next.Next = nil // 这里直接写dummy = nil并不能改变head.next
 	return pre            // cur is nil
+}
+
+// 迭代解法：C解法的更好写法
+func reverseListD(head *utils.ListNode) *utils.ListNode {
+	if head == nil {
+		return head
+	}
+	dummy := new(utils.ListNode)
+	dummy.Next = head
+
+	pre, cur := head, head.Next
+
+	for cur != nil {
+		head.Next = cur.Next // 不仅缓存cur.next，而且处理了尾节点
+
+		cur.Next = pre
+		pre, cur = cur, head.Next
+	}
+	return pre // cur is nil
+}
+
+func reverseListF(head *utils.ListNode) *utils.ListNode {
+	if head == nil {
+		return head
+	}
+
+	var pre, cur *utils.ListNode
+	pre, cur = nil, head
+
+	for cur != nil {
+		post := cur.Next
+		cur.Next = pre
+		pre, cur = cur, post
+	}
+	return pre
+}
+
+// 和迭代解法一模一样
+func reverseListE(head *utils.ListNode) *utils.ListNode {
+	dummy := new(utils.ListNode)
+	dummy.Next = head
+	if head == nil {
+		return head
+	}
+	reverseRecur(dummy, head, head.Next)
+	return dummy.Next
+}
+
+func reverseRecur(dummy, head, cur *utils.ListNode) {
+	if cur == nil {
+		return
+	}
+	head.Next = cur.Next
+
+	cur.Next = dummy.Next
+	dummy.Next = cur
+
+	reverseRecur(dummy, head, head.Next)
 }
 
 /*
 反转整个链表中的前k个
 */
-func reverseKList(head *utils.ListNode, k int) *utils.ListNode {
-	return reverseKRecursive(head, k)
-}
 
 // if k <=1, 直接返回head，不需要反转
 // else, 需要反转，反转以head为首的链表的前k个，返回新的链表头，链表尾部链接后续不需要反转的链表
-func reverseKRecursive(head *utils.ListNode, k int) *utils.ListNode {
+func reverseKList(head *utils.ListNode, k int) *utils.ListNode {
 	if k <= 1 || head == nil || head.Next == nil {
 		return head
 	}
-	newHead := reverseKRecursive(head.Next, k-1) // ensure head != nil
-	follow := head.Next.Next                     // ensure head.Next != nil
+	newHead := reverseKList(head.Next, k-1) // ensure head != nil
+	follow := head.Next.Next                // ensure head.Next != nil
 	head.Next.Next = head
 	head.Next = follow
 	// 也可以这样简略，但是不好理解
 	//head.Next.Next, head.Next = head, head.Next.Next
 	return newHead
+}
+
+func reverseKListC(head *utils.ListNode, k int) *utils.ListNode {
+	dummy := new(utils.ListNode)
+	dummy.Next = head
+	if head == nil {
+		return head
+	}
+
+	reverseKRecur(dummy, head, head.Next, k)
+	return dummy.Next
+}
+
+func reverseKRecur(dummy, head, cur *utils.ListNode, k int) {
+	if cur == nil || k <= 1 {
+		return
+	}
+
+	head.Next = cur.Next
+
+	cur.Next = dummy.Next
+	dummy.Next = cur
+	reverseKRecur(dummy, head, head.Next, k-1)
 }
 
 // 使用头插法
