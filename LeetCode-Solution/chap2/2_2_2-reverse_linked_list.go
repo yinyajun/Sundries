@@ -79,6 +79,19 @@ func reverseBetweenB(head *utils.ListNode, m, n int) *utils.ListNode {
 	return dummy.Next
 }
 
+func reverseBetweenC(head *utils.ListNode, m, n int) *utils.ListNode {
+	return reverseBetweenRecursive(head, m, n)
+}
+
+func reverseBetweenRecursive(head *utils.ListNode, m, n int) *utils.ListNode {
+	if m == 1 { // 经过了m-1次
+		// 反转链表前n个
+		return reverseKList(head, n)
+	}
+	head.Next = reverseBetweenRecursive(head.Next, m-1, n-1)
+	return head
+}
+
 /*
 反转整个链表
 */
@@ -153,11 +166,11 @@ func reverseKList(head *utils.ListNode, k int) *utils.ListNode {
 // if k <=1, 直接返回head，不需要反转
 // else, 需要反转，反转以head为首的链表的前k个，返回新的链表头，链表尾部链接后续不需要反转的链表
 func reverseKRecursive(head *utils.ListNode, k int) *utils.ListNode {
-	if k <= 1 { // todo: check head
+	if k <= 1 || head == nil || head.Next == nil {
 		return head
 	}
-	newHead := reverseKRecursive(head.Next, k-1)
-	follow := head.Next.Next
+	newHead := reverseKRecursive(head.Next, k-1) // ensure head != nil
+	follow := head.Next.Next                     // ensure head.Next != nil
 	head.Next.Next = head
 	head.Next = follow
 	// 也可以这样简略，但是不好理解
@@ -165,6 +178,7 @@ func reverseKRecursive(head *utils.ListNode, k int) *utils.ListNode {
 	return newHead
 }
 
+// 使用头插法
 func reverseKListB(head *utils.ListNode, k int) *utils.ListNode {
 	if head == nil {
 		return head

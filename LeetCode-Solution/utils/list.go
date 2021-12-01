@@ -22,7 +22,7 @@ func NewListNode(val interface{}) *ListNode {
 	}
 }
 
-func ShowListNode(node *ListNode) {
+func ShowList(node *ListNode) {
 	for cur := node; cur != nil; cur = cur.Next {
 		fmt.Print(cur.Val, "  ")
 	}
