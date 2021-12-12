@@ -6,6 +6,7 @@
 package chap2
 
 import (
+	"container/list"
 	"fmt"
 	"solution/utils"
 	"testing"
@@ -138,4 +139,47 @@ func Test2_2_10(t *testing.T) {
 		fmt.Print(cur)
 	}
 	fmt.Println()
+}
+
+func Test2_2_11(t *testing.T) {
+	l := utils.NewListFromSlice([]int{1, 2, 3, 4, 5, 6})
+	last := l.Next.Next.Next.Next.Next
+	last.Next = l
+	fmt.Println(hasCycle(l))
+
+	l = utils.NewListFromSlice([]int{1, 2, 3, 4, 5, 6})
+	fmt.Println(hasCycle(l))
+}
+
+func Test2_2_12(t *testing.T) {
+	l := utils.NewListFromSlice([]int{1, 2, 3, 4, 5, 6})
+	last := l.Next.Next.Next.Next.Next
+	last.Next = l
+	fmt.Println(detectCycle(l).Val)
+
+	l = utils.NewListFromSlice([]int{1, 2, 3, 4, 5, 6})
+	fmt.Println(detectCycle(l))
+}
+
+func Test2_2_13(t *testing.T) {
+	l := utils.NewListFromSlice([]int{1, 2, 3, 4, 5, 6, 7})
+	reorderList(l)
+	utils.ShowList(l)
+}
+
+func Test2_2_14(t *testing.T) {
+	cache := &Cache{
+		list: new(list.List),
+		m:    make(map[interface{}]*list.Element),
+		cap:  3,
+	}
+	cache.Set(1, 1)
+	cache.Set(2, 1)
+	cache.Set(3, 1)
+	cache.Set(4, 1)
+	fmt.Println(cache.Get(3))
+	fmt.Println(cache.Get(7))
+	for cur := cache.list.Front(); cur != nil; cur = cur.Next() {
+		fmt.Println(cur.Value)
+	}
 }

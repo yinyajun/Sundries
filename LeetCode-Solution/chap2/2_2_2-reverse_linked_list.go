@@ -162,9 +162,6 @@ func reverseListD(head *utils.ListNode) *utils.ListNode {
 	if head == nil {
 		return head
 	}
-	dummy := new(utils.ListNode)
-	dummy.Next = head
-
 	pre, cur := head, head.Next
 
 	for cur != nil {
@@ -176,6 +173,7 @@ func reverseListD(head *utils.ListNode) *utils.ListNode {
 	return pre // cur is nil
 }
 
+// 迭代解法：C解法的更好写法
 func reverseListF(head *utils.ListNode) *utils.ListNode {
 	if head == nil {
 		return head

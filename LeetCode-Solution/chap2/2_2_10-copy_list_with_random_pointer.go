@@ -15,22 +15,23 @@ type RandomNode struct {
 }
 
 func copyRandomList(head *RandomNode) *RandomNode {
+	// 在现有节点后面连上一个新节点（头插法）
 	for cur := head; cur != nil; {
 		node := &RandomNode{val: cur.val}
 		node.next = cur.next
 		cur.next = node
 		cur = node.next
 	}
-
+	// 将新节点的random指针指向正确位置
 	for cur := head; cur != nil; {
 		node := cur.next
-
 		if cur.random != nil {
 			node.random = cur.random.next
 		}
 		cur = node.next
 	}
 
+	// 分离出新链表
 	dummy := new(RandomNode)
 	pre := dummy
 
