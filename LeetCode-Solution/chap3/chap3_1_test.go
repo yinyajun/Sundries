@@ -16,6 +16,10 @@ func Test3_1_1(t *testing.T) {
 }
 
 func Test3_1_2(t *testing.T) {
-	str := "fahiehagfheheih"
-	fmt.Println(strStr(str, "hag"))
+	str := "ATGTGAGCTGGTGTGTGCFAA"
+	pattern := "GTGTGC"
+	fmt.Println(strStr(str, pattern))
+	fmt.Println(strStrB(str, pattern))
+	fmt.Println(strStrC(str, pattern))
+	fmt.Println(strStrD(str, pattern))
 }
