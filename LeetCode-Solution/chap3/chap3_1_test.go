@@ -23,3 +23,22 @@ func Test3_1_2(t *testing.T) {
 	fmt.Println(strStrC(str, pattern))
 	fmt.Println(strStrD(str, pattern))
 }
+
+func Test3_1_3(t *testing.T) {
+	fmt.Println(atoi("-3924X8fc"))
+	fmt.Println(atoi("+413"))
+	fmt.Println(atoi("++c"))
+	fmt.Println(atoi("++1"))
+	fmt.Println(atoi("-2147483648"))
+}
+
+func Test3_1_4(t *testing.T) {
+	fmt.Println(addBinary("110", "10"))
+	fmt.Println(addBinaryB("110", "10"))
+}
+
+func Test3_1_5(t *testing.T) {
+	str := "aaeoghgeio"
+	fmt.Println(longPalindromicSubstring(str))
+	fmt.Println(longPalindromicSubstringB(str))
+}

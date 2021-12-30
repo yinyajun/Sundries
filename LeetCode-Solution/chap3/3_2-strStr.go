@@ -68,7 +68,8 @@ func NewKMP1(pattern string) *KMP1 {
 			kmp.DFA[c][j] = kmp.DFA[c][x] // 默认失配，回到重启状态
 		}
 		kmp.DFA[int(pattern[j])][j] = j + 1 // 更新匹配状态
-		x = kmp.DFA[int(pattern[j])][x]     // 更新重启状态（重启状态意味着未匹配前的最大公共前后缀，此时遇到pattern[j]，它会怎么更新？直接调用DFA[][x]即可）
+		x = kmp.DFA[int(pattern[j])][x]     // 更新重启状态（重启状态比当前状态j慢一个状态，也就是说，重启状态的dfa已经被更新过）
+		// 重启状态意味着未匹配前的最大公共前后缀，此时遇到pattern[j]，它会怎么更新？直接调用DFA[][x]即可
 	}
 	return kmp
 }
@@ -117,11 +118,11 @@ func kmp2(text, pattern string) int {
 	return n
 }
 
-// next[i]: pattern[0...i-1]已经匹配，在已经匹配的串中的最大公共前后缀的长度(或者认为是重启位置)
+// next[i]: pattern[0...i)已经匹配，在已经匹配的串中的最大公共前后缀的长度(或者认为是重启位置)
 // next[i] = pre    =>    pattern[0...pre-1] = pattern[i-pre...i-1]
 // * if pattern[pre]==pattern[i], next[i+1]=pre+1
 // * if pattern[pre]!=pattern[i], 不能在已有的最大公共前后缀上构成新的最大公共前后缀
-// 				需要在当前的最大公共前后缀的子集中寻找，pre = next[pre], 直到pattern[i] == pattern[pre]，此时next[i]=pre+1
+// 	    需要在当前的最大公共前后缀的子集中寻找，pre = next[pre], 直到pattern[i] == pattern[pre]，此时next[i]=pre+1
 func getNext(pattern string) []int {
 	m := len(pattern)
 	next := make([]int, m+1)
