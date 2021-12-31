@@ -61,20 +61,41 @@ func longPalindromicSubstringB(a string) string {
 		}
 	}
 
-	//for i := 0; i < n; i++ {
-	//	fmt.Print(i, " ")
-	//	for j := 0; j < n; j++ {
-	//		fmt.Print(dp[i][j], " ")
-	//	}
-	//	fmt.Println()
-	//}
-
 	// search result
 	for j := n - 1; j >= 0; j-- {
 		for i := 0; i < n-j; i++ {
 			if dp[i][i+j] {
 				ret = a[i : i+j+1]
 				return ret
+			}
+		}
+	}
+	return ret
+}
+
+// 压缩状态的动态规划
+func longPalindromicSubstringC(a string) string {
+	var (
+		n   = len(a)
+		dp  = [2][]bool{}
+		ret string
+	)
+
+	for i := 0; i < 2; i++ {
+		dp[i] = make([]bool, n)
+	}
+	for j := 0; j < n; j++ {
+		row := j % 2
+		for i := 0; i < n-j; i++ {
+			if j == 0 {
+				dp[row][i] = true
+			} else if j == 1 {
+				dp[row][i] = a[i] == a[i+j]
+			} else { // j >= 2
+				dp[row][i] = dp[(j-2)%2][i+1] && a[i] == a[i+j]
+			}
+			if dp[row][i] && j+1 > len(ret) {
+				ret = a[i : i+j+1]
 			}
 		}
 	}

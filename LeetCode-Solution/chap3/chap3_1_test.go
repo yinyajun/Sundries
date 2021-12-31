@@ -41,4 +41,5 @@ func Test3_1_5(t *testing.T) {
 	str := "aaeoghgeio"
 	fmt.Println(longPalindromicSubstring(str))
 	fmt.Println(longPalindromicSubstringB(str))
+	fmt.Println(longPalindromicSubstringC(str))
 }
