@@ -38,8 +38,14 @@ func Test3_1_4(t *testing.T) {
 }
 
 func Test3_1_5(t *testing.T) {
-	str := "aaeoghgeio"
+	str := "feuislghahgiuagrefg"
 	fmt.Println(longPalindromicSubstring(str))
 	fmt.Println(longPalindromicSubstringB(str))
 	fmt.Println(longPalindromicSubstringC(str))
+	fmt.Println(longPalindromicSubstringD(str))
+	fmt.Println(longPalindromicSubstringE(str))
+	fmt.Println(longPalindromicSubstringF(str))
+	fmt.Println(longPalindromicSubstringG(str))
+	fmt.Println(longPalindromicSubstringH(str))
+	fmt.Println(longPalindromicSubstringI(str))
 }
