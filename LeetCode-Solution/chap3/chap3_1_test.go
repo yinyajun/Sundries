@@ -49,3 +49,27 @@ func Test3_1_5(t *testing.T) {
 	fmt.Println(longPalindromicSubstringH(str))
 	fmt.Println(longPalindromicSubstringI(str))
 }
+
+func Test3_1_6(t *testing.T) {
+	text := "ab"
+	pattern := "a*b*"
+	fmt.Println(isMatch(text, pattern))
+	fmt.Println(isMatchB(text, pattern))
+	fmt.Println(isMatchC(text, pattern))
+	fmt.Println(isMatchD(text, pattern))
+	fmt.Println(isMatchE(text, pattern))
+}
+
+func Test3_1_7(t *testing.T) {
+	text := "adceb"
+	pattern := "*a*e"
+	fmt.Println(isMatch2(text, pattern))
+	//fmt.Println(isMatch2B(text, pattern))
+	fmt.Println(isMatch2C(text, pattern))
+	fmt.Println(isMatch2D(text, pattern))
+	fmt.Println(isMatch2E(text, pattern))
+	fmt.Println(isMatch2F(text, pattern))
+	fmt.Println(isMatch2G(text, pattern))
+	fmt.Println(isMatch2H(text, pattern))
+	fmt.Println(isMatch2I(text, pattern))
+}
