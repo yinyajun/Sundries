@@ -25,25 +25,26 @@ func isMatch2(s, p string) bool {
 	return match2(s, p, 0, 0)
 }
 
+// match2(s, p, i, j)  s[i...] and p[j...] match ?
 func match2(s, p string, i, j int) bool {
 	if j == len(p) {
 		return i == len(s)
 	}
 	// j < len(p)
-	if j < len(p) && p[j] == '*' {
-		for j < len(p) && p[j] == '*' {
+	if j < len(p) && p[j] == '*' { // pattern以*开头
+		for j < len(p) && p[j] == '*' { // 跳过连续的*
 			j++
 		}
 		// j >= len(p) || p[j] != '*'
-		if j >= len(p) { // pattern 以*结尾
+		if j >= len(p) { // pattern全部都是*
 			return true
 		}
-		// p[j]!= '*'
-		// p[j-1]== '*'， 试探这个'*'应该匹配文本串多少个字符，应该保证剩余的文本串和模式串完全匹配（当然应该在文本串为空之前）
+		// p[j]!= '*'， p[j-1]== '*'
+		// 试探这个'*'应该匹配文本串多少个字符，应该保证剩余的文本串和模式串完全匹配（当然应该在文本串为空之前）
 		for i < len(s) && !match2(s, p, i, j) { // 剩余的文本串和模式串不能完全匹配，则*多匹配一个文本串字符
 			i++
 		}
-		// i >= len(s) || match2(s, p ,i, j)
+		// i >= len(s) || match2(s, p ,i, j) is true
 		return i < len(s)
 	} else { // p[j] != '*'
 		return (i < len(s)) && (p[j] == s[i] || p[j] == '?') &&
@@ -187,6 +188,38 @@ func isMatch2E(s, p string) bool {
 	return dp[m][n]
 }
 
+func isMatch2E2(s, p string) bool {
+	var (
+		m, n = len(s), len(p)
+		dp   = make([][]bool, m+1)
+	)
+
+	for i := 0; i < len(dp); i++ {
+		dp[i] = make([]bool, n+1)
+	}
+
+	// base
+	for i := 0; i < m+1; i++ {
+		dp[i][0] = false
+	}
+	dp[0][0] = true
+	for j := 1; j < n+1; j++ {
+		dp[0][j] = dp[0][j-1] && p[j-1] == '*'
+	}
+
+	// iterate
+	for i := 1; i < m+1; i++ {
+		for j := 1; j < n+1; j++ {
+			if p[j-1] == '*' {
+				dp[i][j] = dp[i][j-1] || dp[i-1][j]
+			} else {
+				dp[i][j] = (s[i-1] == p[j-1] || p[j-1] == '?') && dp[i-1][j-1]
+			}
+		}
+	}
+	return dp[m][n]
+}
+
 // 逆序解法
 // dp[i][j] : s[i：]和p[j:]是否匹配
 // dp[i][j] = match && dp[i+1][j+1], if no star
@@ -214,9 +247,38 @@ func isMatch2F(s, p string) bool {
 			}
 		}
 	}
-	//for i := len(dp) - 1; i >= 0; i-- {
-	//	fmt.Println(dp[i], i)
+	return dp[0][0]
+}
+
+func isMatch2F2(s, p string) bool {
+	var (
+		m, n = len(s), len(p)
+		dp   = make([][]bool, m+1)
+	)
+
+	for i := 0; i < len(dp); i++ {
+		dp[i] = make([]bool, n+1)
+	}
+
+	// base
+	//for i:= 0 ; i < m+1; i ++{
+	//	dp[i][n] = false
 	//}
+	dp[m][n] = true
+	for j := n - 1; j > 0; j-- {
+		dp[m][j] = dp[m][j+1] && p[j] == '*'
+	}
+
+	// iterate
+	for i := m - 1; i >= 0; i-- {
+		for j := n - 1; j >= 0; j-- {
+			if p[j] == '*' {
+				dp[i][j] = dp[i][j+1] || dp[i+1][j]
+			} else {
+				dp[i][j] = (s[i] == p[j] || p[j] == '?') && dp[i+1][j+1]
+			}
+		}
+	}
 	return dp[0][0]
 }
 
@@ -266,8 +328,9 @@ func isMatch2H(s, p string) bool {
 			if str[left] != '*' {
 				return false
 			}
+			left++
 		}
-		left++
+
 		return true
 	}
 
