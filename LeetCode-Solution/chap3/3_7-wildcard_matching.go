@@ -314,27 +314,26 @@ func isMatch2G(s, p string) bool {
 	return dp[m%2][0]
 }
 
-//假设p的样子为"*u1*u2*u3*"
-//在s中暴力寻找u1，u2 ...
-//pattern有如下变形
-//1. p形如"*u1*u2*u3*u4", 末尾*后还有字符
-//2. p形如"u1*u2*u3*u4"，开头*之前有字符
+// 假设p的样子为"*u1*u2*u3*"
+// 在s中暴力寻找u1，u2 ...
+// pattern可能有如下变形
+// 1. p形如"*u1*u2*u3*u4", 末尾*后还有字符
+// 2. p形如"u1*u2*u3*u4"，开头*之前有字符
 func isMatch2H(s, p string) bool {
 	charMatch := func(u, v byte) bool {
 		return u == v || v == '?'
 	}
-	allStar := func(str string, left, right int) bool {
+	allStar := func(str string, left, right int) bool { // str[left:right] is all star?
 		for left <= right {
 			if str[left] != '*' {
 				return false
 			}
 			left++
 		}
-
 		return true
 	}
 
-	// 处理p中*之后的字符, 从尾到前要和s匹配
+	// case1: 处理p中*之后的字符, 从尾到前要和s匹配
 	for len(s) > 0 && len(p) > 0 && p[len(p)-1] != '*' {
 		if charMatch(s[len(s)-1], p[len(p)-1]) {
 			s = s[:len(s)-1]
