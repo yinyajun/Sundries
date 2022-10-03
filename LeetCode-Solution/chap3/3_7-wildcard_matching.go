@@ -381,6 +381,74 @@ func isMatch2H(s, p string) bool {
 	return allStar(p, pIdx, len(p)-1)
 }
 
+// 假设p的样子为"*u1*u2*u3*"
+// 在s中暴力寻找u1，u2 ...
+// pattern可能有如下变形
+// 1. p形如"*u1*u2*u3*u4", 末尾*后还有字符
+// 2. p形如"u1*u2*u3*u4"，开头*之前有字符
+func isMatch2H2(s, p string) bool {
+	charMatch := func(u, v byte) bool {
+		return u == v || v == '?'
+	}
+	allStar := func(str string, left, right int) bool { // str[left:right] is all star?
+		for left <= right {
+			if str[left] != '*' {
+				return false
+			}
+			left++
+		}
+		return true
+	}
+
+	// case 1: p中最后一个*后面还有非*字符
+	// 从尾到前，这些非*字符要和s一一匹配
+	// 去除这些匹配字符外，变为s[...j]和p[...i]的match问题
+	var i, j int
+	for i, j = len(p)-1, len(s)-1; i >= 0 && j >= 0 && p[i] != '*'; i-- {
+		if charMatch(s[j], p[i]) {
+			j--
+		} else {
+			return false
+		}
+	}
+
+	// i < 0 || j < 0 || p[i] == '*'
+	if i < 0 { // pattern is empty
+		return j < 0
+	}
+
+	// j < 0 || p[i] == '*'
+	p = p[:i+1]
+	s = s[:j+1]
+
+	var (
+		sIdx, pIdx = 0, 0   // s,p中遍历指针
+		sRec, pRec = -1, -1 // s,p回退位置
+	)
+
+	for sIdx < len(s) && pIdx < len(p) {
+		if p[pIdx] == '*' { // p遇到*，更新sRec pRec
+			pIdx++
+			sRec, pRec = sIdx, pIdx
+		} else {
+			if charMatch(s[sIdx], p[pIdx]) {
+				sIdx++
+				pIdx++
+			} else { // mismatch，指针回退(可以用kmp进一步优化，不过暴力的效率还可以)
+				if sRec != -1 && sRec < len(s) { // sRec=-1 意味着失配时，p中还没有*，也就是case 2
+					sRec++
+					sIdx, pIdx = sRec, pRec
+				} else {
+					return false
+				}
+			}
+		}
+	}
+
+	// sIdx >= len(s) || pIdx >= len(p)
+	return allStar(p, pIdx, len(p)-1)
+}
+
 func isMatch2I(s, p string) bool {
 	var (
 		sIdx, pIdx int
