@@ -38,3 +38,35 @@ func deepestLeavesSum(root *TreeNode) int {
 	}
 	return res
 }
+
+func deepestLeavesSum2(root *TreeNode) int {
+	var res int
+	if root == nil {
+		return res
+	}
+
+	var maxDepth int
+	var recurse func(root *TreeNode, depth int)
+
+	recurse = func(root *TreeNode, level int) {
+		if root == nil {
+			return
+		}
+		if level > maxDepth { // 如果遇到更深的叶子节点
+			maxDepth = level
+			res = 0
+		}
+
+		if root.Left == nil && root.Right == nil { // Leaf
+			if level == maxDepth { // 只计算最深一层的叶子节点的和
+				res += root.Val
+			}
+			return
+		}
+		recurse(root.Left, level+1)
+		recurse(root.Right, level+1)
+	}
+
+	recurse(root, 0)
+	return res
+}
