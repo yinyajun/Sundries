@@ -45,3 +45,32 @@ func isSymmetric(root *TreeNode) bool {
 	}
 	return true
 }
+
+func isSymmetric1(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+
+	var recurse func(left, right *TreeNode) bool
+
+	// left, right 两个子树是否对称
+	// 先判断left == right，再查看 left.left和right.right是否对称，left.right和right.left是否对称
+	// 也可以这么想：先判断left子树是否对应，在递归查看left.left对称否，递归查看left.right对称否
+	recurse = func(left, right *TreeNode) bool {
+		if left == nil && right == nil {
+			return true
+		}
+
+		if left == nil || right == nil {
+			return false
+		}
+
+		if left.Val != right.Val {
+			return false
+		}
+
+		return recurse(left.Left, right.Right) && recurse(left.Right, right.Left)
+	}
+
+	return recurse(root.Left, root.Right)
+}
