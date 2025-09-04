@@ -17,7 +17,35 @@ class Solution:
         #           a. tgt < a[n-1] --> right
         #           b. tgt > a[n-1] --> left
         # -----------------------------------------------------------
-        #
-        # 1. left:
-        #   a[mid] > tgt > a[0]
-        #   a[mid] > tgt && tgt < a[0]
+
+        # 1. a[mid] >= a[lo], left inc
+        #      a. a[lo] <= tgt < a[mid] -> left
+        #      b. else: -> right
+        # 2. a[mid] <= a[hi-1], right inc
+        #      a. a[mid] < tgt <= a[hi-1] -> right
+        #      b. else -> left
+        # -----------------------------------------------------------------
+
+        lo = 0
+        hi = len(nums)
+        # [0, lo) | [lo, hi) | [hi, n)
+
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if nums[mid] == target:
+                return mid
+
+            elif nums[mid] >= nums[lo]:  # left 单调
+                if nums[lo] <= target < nums[mid]:
+                    hi = mid  # [lo, mid)
+                else:
+                    lo = mid + 1  # [mid+1, hi)
+
+            else:  # right 单调
+                if nums[mid] < target <= nums[hi-1]:
+                    lo = mid + 1 # [mid+1, hi)
+                else:
+                    hi = mid
+
+        # lo == hi
+        return -1
