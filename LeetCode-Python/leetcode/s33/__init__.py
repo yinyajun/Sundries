@@ -2,9 +2,8 @@ from typing import List
 
 
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        pass
 
+    def search(self, nums: List[int], target: int) -> int:
         # [lo, hi)
         # a[mid] > tgt
         #     1. a[mid] > a[0], [lo, mid] inc -> left & right
@@ -36,16 +35,65 @@ class Solution:
                 return mid
 
             elif nums[mid] >= nums[lo]:  # left 单调
-                if nums[lo] <= target < nums[mid]:
+                if nums[lo] <= target < nums[mid]:  # tgt在左侧
                     hi = mid  # [lo, mid)
                 else:
                     lo = mid + 1  # [mid+1, hi)
 
             else:  # right 单调
-                if nums[mid] < target <= nums[hi-1]:
-                    lo = mid + 1 # [mid+1, hi)
+                if nums[mid] < target <= nums[hi - 1]:  # tgt在右侧
+                    lo = mid + 1  # [mid+1, hi)
                 else:
                     hi = mid
 
         # lo == hi
         return -1
+
+    def search2(self, nums, target):
+        lo = 0
+        hi = len(nums)
+
+        # [lo, hi)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if nums[mid] == target:
+                return mid
+
+            elif nums[mid] <= nums[hi - 1]:  # right mono
+                if nums[mid] < target <= nums[hi - 1]:  # tgt in right
+                    lo = mid + 1
+                else:
+                    hi = mid
+            else:  # left mono
+                if nums[lo] <= target < nums[mid]:  # tgt in left
+                    hi = mid
+                else:
+                    lo = mid + 1
+
+        return -1
+
+    def search11(self, nums, target):
+        lo = 0
+        hi = len(nums)
+        # [0, lo) | [lo, hi) | [hi, n)
+
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if nums[mid] == target:
+                return mid
+
+            elif nums[mid] >= nums[0]:  # left 单调 note: here use nums[0] 作为固定左端
+                if nums[lo] <= target < nums[mid]:  # tgt在左侧
+                    hi = mid  # [lo, mid)
+                else:
+                    lo = mid + 1  # [mid+1, hi)
+
+            else:  # right 单调
+                if nums[mid] < target <= nums[hi - 1]:  # tgt在右侧
+                    lo = mid + 1  # [mid+1, hi)
+                else:
+                    hi = mid
+
+        # lo == hi
+        return -1
+
